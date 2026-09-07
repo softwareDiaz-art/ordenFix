@@ -8,12 +8,17 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OrdenFix | Gestión inteligente de archivos</title>
+    <title>OrdenFix | Gestión de archivos</title>
 
     <meta name="description"
-          content="OrdenFix: herramientas sencillas para organizar, administrar y convertir tus archivos.">
+          content="OrdenFix reúne herramientas para organizar, administrar y convertir tus archivos desde una sola aplicación.">
+
 
     <style>
+
+        /* =========================
+           CONFIGURACIÓN GENERAL
+        ========================= */
 
         * {
             margin: 0;
@@ -32,8 +37,9 @@
             line-height: 1.6;
         }
 
+
         /* =========================
-           BARRA DE NAVEGACIÓN
+           NAVEGACIÓN
         ========================= */
 
         header {
@@ -41,7 +47,7 @@
             top: 0;
             z-index: 1000;
 
-            background: rgba(255,255,255,0.96);
+            background: rgba(255, 255, 255, 0.97);
 
             border-bottom: 1px solid #e5e7eb;
 
@@ -52,21 +58,25 @@
             justify-content: space-between;
         }
 
+
         .logo {
-            font-size: 27px;
+            font-size: 28px;
             font-weight: 800;
             color: #172033;
         }
+
 
         .logo span {
             color: #2563eb;
         }
 
+
         nav {
             display: flex;
-            gap: 28px;
             align-items: center;
+            gap: 28px;
         }
+
 
         nav a {
             text-decoration: none;
@@ -75,30 +85,39 @@
             transition: 0.2s;
         }
 
+
         nav a:hover {
             color: #2563eb;
         }
 
+
         .nav-button {
             background: #2563eb;
             color: white !important;
+
             padding: 10px 18px;
+
             border-radius: 8px;
         }
+
 
         .nav-button:hover {
             background: #1d4ed8;
         }
 
+
         /* =========================
-           HERO
+           HERO / PORTADA
         ========================= */
 
         .hero {
+
             min-height: 650px;
 
             display: flex;
+
             align-items: center;
+
             justify-content: center;
 
             text-align: center;
@@ -106,25 +125,33 @@
             padding: 90px 20px;
 
             background:
-                radial-gradient(circle at top right,
-                rgba(37,99,235,0.14),
-                transparent 40%),
 
-                radial-gradient(circle at bottom left,
-                rgba(59,130,246,0.10),
-                transparent 40%),
+                radial-gradient(
+                    circle at top right,
+                    rgba(37, 99, 235, 0.14),
+                    transparent 40%
+                ),
+
+                radial-gradient(
+                    circle at bottom left,
+                    rgba(59, 130, 246, 0.10),
+                    transparent 40%
+                ),
 
                 white;
         }
+
 
         .hero-content {
             max-width: 850px;
         }
 
+
         .badge {
+
             display: inline-block;
 
-            padding: 8px 16px;
+            padding: 8px 18px;
 
             border-radius: 30px;
 
@@ -137,20 +164,26 @@
             margin-bottom: 25px;
         }
 
-        .hero h1 {
-            font-size: clamp(45px, 7vw, 75px);
 
-            line-height: 1.05;
+        .hero h1 {
+
+            font-size: clamp(42px, 7vw, 72px);
+
+            line-height: 1.08;
 
             margin-bottom: 25px;
         }
 
+
         .hero h1 span {
+            display: block;
             color: #2563eb;
         }
 
+
         .hero p {
-            max-width: 700px;
+
+            max-width: 720px;
 
             margin: auto;
 
@@ -159,7 +192,9 @@
             color: #5b6473;
         }
 
+
         .hero-buttons {
+
             margin-top: 35px;
 
             display: flex;
@@ -171,7 +206,9 @@
             flex-wrap: wrap;
         }
 
+
         .button {
+
             display: inline-block;
 
             padding: 15px 28px;
@@ -185,21 +222,28 @@
             transition: 0.25s;
         }
 
+
         .button-primary {
+
             background: #2563eb;
 
             color: white;
 
-            box-shadow: 0 8px 20px rgba(37,99,235,0.25);
+            box-shadow:
+                0 8px 20px rgba(37, 99, 235, 0.25);
         }
 
+
         .button-primary:hover {
+
             background: #1d4ed8;
 
             transform: translateY(-2px);
         }
 
+
         .button-secondary {
+
             background: white;
 
             color: #172033;
@@ -207,45 +251,57 @@
             border: 1px solid #d8dee8;
         }
 
+
         .button-secondary:hover {
+
             border-color: #2563eb;
 
             color: #2563eb;
         }
+
 
         /* =========================
            SECCIONES
         ========================= */
 
         .section {
+
             padding: 90px 7%;
         }
 
+
         .section-header {
+
             text-align: center;
 
-            max-width: 700px;
+            max-width: 720px;
 
             margin: 0 auto 55px;
         }
 
+
         .section-header h2 {
+
             font-size: 38px;
 
             margin-bottom: 15px;
         }
 
+
         .section-header p {
+
             color: #667085;
 
             font-size: 17px;
         }
+
 
         /* =========================
            CARACTERÍSTICAS
         ========================= */
 
         .features {
+
             display: grid;
 
             grid-template-columns:
@@ -254,7 +310,9 @@
             gap: 25px;
         }
 
+
         .card {
+
             background: white;
 
             padding: 32px;
@@ -263,18 +321,24 @@
 
             border: 1px solid #e8ebf0;
 
-            box-shadow: 0 8px 25px rgba(0,0,0,0.04);
+            box-shadow:
+                0 8px 25px rgba(0, 0, 0, 0.04);
 
             transition: 0.25s;
         }
 
+
         .card:hover {
+
             transform: translateY(-6px);
 
-            box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+            box-shadow:
+                0 15px 35px rgba(0, 0, 0, 0.08);
         }
 
+
         .icon {
+
             width: 52px;
 
             height: 52px;
@@ -296,31 +360,33 @@
             margin-bottom: 22px;
         }
 
+
         .card h3 {
+
             margin-bottom: 10px;
 
             font-size: 21px;
         }
 
+
         .card p {
+
             color: #667085;
         }
 
+
         /* =========================
-           POR QUÉ ORDENFIX
+           CÓMO FUNCIONA
         ========================= */
 
-        .why {
-            background: #111827;
+        .how {
 
-            color: white;
+            background: white;
         }
 
-        .why .section-header p {
-            color: #cbd5e1;
-        }
 
-        .why-grid {
+        .steps {
+
             max-width: 1000px;
 
             margin: auto;
@@ -328,53 +394,28 @@
             display: grid;
 
             grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
-
-            gap: 25px;
-        }
-
-        .why-item {
-            padding: 30px;
-
-            border: 1px solid #263244;
-
-            border-radius: 14px;
-
-            background: #182131;
-        }
-
-        .why-item h3 {
-            margin-bottom: 10px;
-        }
-
-        .why-item p {
-            color: #cbd5e1;
-        }
-
-        /* =========================
-           CÓMO FUNCIONA
-        ========================= */
-
-        .steps {
-            max-width: 900px;
-
-            margin: auto;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(auto-fit, minmax(220px, 1fr));
+                repeat(auto-fit, minmax(230px, 1fr));
 
             gap: 30px;
         }
 
+
         .step {
+
             text-align: center;
 
-            padding: 25px;
+            padding: 30px;
+
+            background: #f8fafc;
+
+            border-radius: 15px;
+
+            border: 1px solid #e5e7eb;
         }
 
+
         .number {
+
             width: 55px;
 
             height: 55px;
@@ -398,19 +439,88 @@
             font-weight: bold;
         }
 
+
+        .step h3 {
+
+            margin-bottom: 10px;
+        }
+
+
         .step p {
+
             color: #667085;
         }
+
+
+        /* =========================
+           POR QUÉ ORDENFIX
+        ========================= */
+
+        .why {
+
+            background: #111827;
+
+            color: white;
+        }
+
+
+        .why .section-header p {
+
+            color: #cbd5e1;
+        }
+
+
+        .why-grid {
+
+            max-width: 1000px;
+
+            margin: auto;
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(auto-fit, minmax(220px, 1fr));
+
+            gap: 25px;
+        }
+
+
+        .why-item {
+
+            padding: 30px;
+
+            border: 1px solid #263244;
+
+            border-radius: 14px;
+
+            background: #182131;
+        }
+
+
+        .why-item h3 {
+
+            margin-bottom: 10px;
+        }
+
+
+        .why-item p {
+
+            color: #cbd5e1;
+        }
+
 
         /* =========================
            PRECIO
         ========================= */
 
         .pricing {
+
             background: #eef4ff;
         }
 
+
         .price-card {
+
             max-width: 430px;
 
             margin: auto;
@@ -425,16 +535,21 @@
 
             border: 2px solid #2563eb;
 
-            box-shadow: 0 15px 40px rgba(37,99,235,0.12);
+            box-shadow:
+                0 15px 40px rgba(37, 99, 235, 0.12);
         }
 
+
         .price-card h3 {
+
             font-size: 26px;
 
             margin-bottom: 10px;
         }
 
+
         .price {
+
             font-size: 55px;
 
             font-weight: 800;
@@ -444,13 +559,17 @@
             color: #172033;
         }
 
+
         .price-description {
+
             color: #667085;
 
             margin-bottom: 25px;
         }
 
+
         .price-card ul {
+
             list-style: none;
 
             text-align: left;
@@ -458,13 +577,17 @@
             margin: 25px 0;
         }
 
+
         .price-card li {
+
             padding: 9px 0;
 
             color: #4b5563;
         }
 
+
         .price-card li::before {
+
             content: "✓";
 
             color: #2563eb;
@@ -474,23 +597,29 @@
             margin-right: 10px;
         }
 
+
         .full-button {
+
             width: 100%;
 
             text-align: center;
         }
+
 
         /* =========================
            FAQ
         ========================= */
 
         .faq {
+
             max-width: 800px;
 
             margin: auto;
         }
 
+
         details {
+
             background: white;
 
             border: 1px solid #e5e7eb;
@@ -502,23 +631,29 @@
             padding: 18px 20px;
         }
 
+
         summary {
+
             cursor: pointer;
 
             font-weight: bold;
         }
 
+
         details p {
+
             margin-top: 15px;
 
             color: #667085;
         }
+
 
         /* =========================
            FOOTER
         ========================= */
 
         footer {
+
             background: #111827;
 
             color: white;
@@ -528,11 +663,14 @@
             padding: 35px 20px;
         }
 
+
         footer p {
+
             color: #9ca3af;
 
             margin-top: 8px;
         }
+
 
         /* =========================
            CELULAR
@@ -541,32 +679,51 @@
         @media (max-width: 700px) {
 
             header {
+
                 padding: 15px 5%;
             }
 
+
             nav {
+
                 display: none;
             }
 
+
             .hero {
+
                 min-height: 580px;
 
                 padding: 70px 20px;
             }
 
+
+            .hero h1 {
+
+                font-size: 45px;
+            }
+
+
             .hero p {
+
                 font-size: 18px;
             }
 
+
             .section {
+
                 padding: 65px 5%;
             }
 
+
             .section-header h2 {
+
                 font-size: 31px;
             }
 
+
             .price-card {
+
                 padding: 32px 25px;
             }
 
@@ -587,8 +744,11 @@
 <header>
 
     <div class="logo">
+
         Orden<span>Fix</span>
+
     </div>
+
 
     <nav>
 
@@ -600,6 +760,10 @@
             Cómo funciona
         </a>
 
+        <a href="#por-que">
+            Ventajas
+        </a>
+
         <a href="#precio">
             Precio
         </a>
@@ -608,8 +772,11 @@
             FAQ
         </a>
 
-        <a href="#precio" class="nav-button">
+        <a href="#precio"
+           class="nav-button">
+
             Comprar
+
         </a>
 
     </nav>
@@ -618,41 +785,62 @@
 
 
 <!-- =========================
-     HERO
+     PORTADA
 ========================= -->
 
 <section class="hero">
 
     <div class="hero-content">
 
+
         <div class="badge">
-            Herramientas para tus archivos
+
+            Software para gestión de archivos
+
         </div>
 
+
         <h1>
-            Tus archivos.
-            <span>En orden.</span>
+
+            Gestiona tus archivos
+
+            <span>
+                de forma sencilla.
+            </span>
+
         </h1>
 
+
         <p>
-            OrdenFix reúne diferentes herramientas para
-            organizar, administrar y convertir tus archivos
-            de manera sencilla desde una sola aplicación.
+
+            OrdenFix reúne diferentes herramientas
+            para organizar, administrar y convertir
+            tus archivos desde una sola aplicación.
+
         </p>
+
 
         <div class="hero-buttons">
 
+
             <a href="#precio"
                class="button button-primary">
-                Comprar OrdenFix
+
+                Obtener OrdenFix
+
             </a>
+
 
             <a href="#caracteristicas"
                class="button button-secondary">
-                Ver características
+
+                Conocer el programa
+
             </a>
 
+
         </div>
+
 
     </div>
 
@@ -666,16 +854,22 @@
 <section id="caracteristicas"
          class="section">
 
+
     <div class="section-header">
 
         <h2>
-            Todo en un solo lugar
+
+            Herramientas de OrdenFix
+
         </h2>
 
+
         <p>
-            Herramientas diseñadas para facilitar
-            las tareas habituales de administración
-            de archivos.
+
+            Diferentes funciones para facilitar
+            la administración y organización
+            de tus archivos.
+
         </p>
 
     </div>
@@ -695,8 +889,10 @@
             </h3>
 
             <p>
-                Organiza tus archivos automáticamente
-                en diferentes carpetas.
+
+                Organiza automáticamente tus archivos
+                en diferentes carpetas según su tipo.
+
             </p>
 
         </div>
@@ -713,8 +909,10 @@
             </h3>
 
             <p>
-                Identifica archivos duplicados
+
+                Encuentra archivos duplicados
                 dentro de tus carpetas.
+
             </p>
 
         </div>
@@ -731,8 +929,10 @@
             </h3>
 
             <p>
+
                 Renombra múltiples archivos
-                de manera rápida.
+                de forma rápida y organizada.
+
             </p>
 
         </div>
@@ -749,8 +949,10 @@
             </h3>
 
             <p>
+
                 Convierte imágenes y documentos
                 utilizando las herramientas disponibles.
+
             </p>
 
         </div>
@@ -767,8 +969,10 @@
             </h3>
 
             <p>
-                Copia varios archivos de forma
-                sencilla hacia otra ubicación.
+
+                Copia varios archivos hacia
+                otra ubicación de forma sencilla.
+
             </p>
 
         </div>
@@ -781,12 +985,14 @@
             </div>
 
             <h3>
-                Carpetas vacías
+                Eliminar carpetas vacías
             </h3>
 
             <p>
-                Detecta y elimina carpetas que
-                ya no contienen archivos.
+
+                Detecta y elimina carpetas
+                que ya no contienen archivos.
+
             </p>
 
         </div>
@@ -798,105 +1004,27 @@
 
 
 <!-- =========================
-     POR QUÉ ORDENFIX
-========================= -->
-
-<section class="section why">
-
-    <div class="section-header">
-
-        <h2>
-            ¿Por qué OrdenFix?
-        </h2>
-
-        <p>
-            Una aplicación pensada para reunir
-            herramientas útiles en un mismo lugar.
-        </p>
-
-    </div>
-
-
-    <div class="why-grid">
-
-
-        <div class="why-item">
-
-            <h3>
-                Sencillo
-            </h3>
-
-            <p>
-                Interfaz pensada para que puedas
-                realizar tus tareas sin complicaciones.
-            </p>
-
-        </div>
-
-
-        <div class="why-item">
-
-            <h3>
-                Varias herramientas
-            </h3>
-
-            <p>
-                Diferentes funciones de administración
-                de archivos dentro de una sola aplicación.
-            </p>
-
-        </div>
-
-
-        <div class="why-item">
-
-            <h3>
-                Práctico
-            </h3>
-
-            <p>
-                Reduce el trabajo repetitivo y facilita
-                la organización de tus archivos.
-            </p>
-
-        </div>
-
-
-        <div class="why-item">
-
-            <h3>
-                En constante evolución
-            </h3>
-
-            <p>
-                OrdenFix puede seguir incorporando
-                nuevas herramientas y funciones.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================
-     CÓMO FUNCIONA
+     CÓMO FUNCIONA EL PROGRAMA
 ========================= -->
 
 <section id="como-funciona"
-         class="section">
+         class="section how">
+
 
     <div class="section-header">
 
         <h2>
-            Empieza con OrdenFix
+
+            ¿Cómo funciona OrdenFix?
+
         </h2>
 
+
         <p>
-            Un proceso sencillo para comenzar
-            a utilizar la aplicación.
+
+            Realiza tus tareas de administración
+            de archivos desde una interfaz sencilla.
+
         </p>
 
     </div>
@@ -911,12 +1039,19 @@
                 1
             </div>
 
+
             <h3>
-                Compra
+
+                Selecciona una herramienta
+
             </h3>
 
+
             <p>
-                Adquiere tu licencia de OrdenFix.
+
+                Elige desde el menú de OrdenFix
+                la función que necesitas utilizar.
+
             </p>
 
         </div>
@@ -928,13 +1063,19 @@
                 2
             </div>
 
+
             <h3>
-                Recibe tu licencia
+
+                Selecciona los archivos
+
             </h3>
 
+
             <p>
-                Recibirás la información necesaria
-                para activar tu licencia.
+
+                Selecciona la carpeta o los archivos
+                sobre los que quieres trabajar.
+
             </p>
 
         </div>
@@ -946,13 +1087,119 @@
                 3
             </div>
 
+
             <h3>
-                Activa
+
+                Ejecuta la tarea
+
+            </h3>
+
+
+            <p>
+
+                OrdenFix realiza la operación
+                y muestra el resultado directamente
+                en la aplicación.
+
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     VENTAJAS
+========================= -->
+
+<section id="por-que"
+         class="section why">
+
+
+    <div class="section-header">
+
+        <h2>
+
+            ¿Por qué utilizar OrdenFix?
+
+        </h2>
+
+
+        <p>
+
+            Una aplicación pensada para reunir
+            herramientas útiles en un mismo lugar.
+
+        </p>
+
+    </div>
+
+
+    <div class="why-grid">
+
+
+        <div class="why-item">
+
+            <h3>
+                Fácil de utilizar
             </h3>
 
             <p>
-                Introduce tu licencia en OrdenFix
-                y comienza a utilizarlo.
+
+                Una interfaz sencilla para realizar
+                las tareas sin complicaciones.
+
+            </p>
+
+        </div>
+
+
+        <div class="why-item">
+
+            <h3>
+                Varias herramientas
+            </h3>
+
+            <p>
+
+                Diferentes funciones de administración
+                de archivos dentro de una sola aplicación.
+
+            </p>
+
+        </div>
+
+
+        <div class="why-item">
+
+            <h3>
+                Menos trabajo repetitivo
+            </h3>
+
+            <p>
+
+                Facilita tareas que pueden resultar
+                repetitivas cuando se realizan manualmente.
+
+            </p>
+
+        </div>
+
+
+        <div class="why-item">
+
+            <h3>
+                En constante evolución
+            </h3>
+
+            <p>
+
+                OrdenFix puede incorporar nuevas
+                herramientas y funciones en el futuro.
+
             </p>
 
         </div>
@@ -970,15 +1217,21 @@
 <section id="precio"
          class="section pricing">
 
+
     <div class="section-header">
 
         <h2>
+
             Obtén OrdenFix
+
         </h2>
 
+
         <p>
-            Una licencia para utilizar las funciones
-            de OrdenFix.
+
+            Adquiere tu licencia y comienza
+            a utilizar las herramientas de OrdenFix.
+
         </p>
 
     </div>
@@ -986,49 +1239,79 @@
 
     <div class="price-card">
 
+
         <h3>
+
             OrdenFix
+
         </h3>
 
+
+        <!--
+            CAMBIAREMOS ESTE PRECIO
+            CUANDO DEFINAMOS EL VALOR FINAL.
+        -->
+
         <div class="price">
+
             $XX
+
         </div>
 
+
         <p class="price-description">
+
             Licencia de OrdenFix
+
         </p>
 
 
         <ul>
 
+
             <li>
+
                 Acceso a las herramientas
+
             </li>
 
+
             <li>
+
                 Activación mediante licencia
+
             </li>
 
+
             <li>
+
                 Soporte de activación
+
             </li>
 
+
             <li>
+
                 Actualizaciones del programa
+
             </li>
+
 
         </ul>
 
 
         <!--
-        MÁS ADELANTE AQUÍ CONECTAREMOS
-        EL SISTEMA REAL DE PAGO.
+            ESTE BOTÓN SE CONECTARÁ
+            AL SISTEMA DE PAGO MÁS ADELANTE.
         -->
 
         <a href="#"
            class="button button-primary full-button">
+
             Comprar ahora
+
         </a>
+
 
     </div>
 
@@ -1036,16 +1319,19 @@
 
 
 <!-- =========================
-     FAQ
+     PREGUNTAS FRECUENTES
 ========================= -->
 
 <section id="faq"
          class="section">
 
+
     <div class="section-header">
 
         <h2>
+
             Preguntas frecuentes
+
         </h2>
 
     </div>
@@ -1056,61 +1342,112 @@
 
         <details>
 
+
             <summary>
+
                 ¿Qué es OrdenFix?
+
             </summary>
 
+
             <p>
+
                 OrdenFix es una aplicación que reúne
-                diferentes herramientas para administrar
-                y organizar archivos.
+                diferentes herramientas para administrar,
+                organizar y convertir archivos.
+
             </p>
+
 
         </details>
 
 
         <details>
 
+
             <summary>
-                ¿Cómo recibo mi licencia?
+
+                ¿Qué herramientas incluye?
+
             </summary>
 
+
             <p>
-                Después de completar la compra,
-                recibirás las instrucciones necesarias
-                para activar OrdenFix.
+
+                OrdenFix incluye herramientas para mover,
+                copiar, renombrar y buscar archivos,
+                además de funciones relacionadas con
+                duplicados, carpetas vacías y conversión
+                de archivos.
+
             </p>
+
 
         </details>
 
 
         <details>
 
+
             <summary>
-                ¿Dónde activo la licencia?
+
+                ¿Cómo activo mi licencia?
+
             </summary>
 
+
             <p>
+
                 La licencia se introduce directamente
                 desde el sistema de activación de
                 OrdenFix.
+
             </p>
+
 
         </details>
 
 
         <details>
 
+
             <summary>
-                ¿Puedo utilizar OrdenFix después
-                de comprarlo?
+
+                ¿Cómo recibiré mi licencia?
+
             </summary>
 
+
             <p>
-                Sí. Una vez activada una licencia válida,
-                podrás utilizar las funciones incluidas
-                en tu licencia.
+
+                Después de completar la compra,
+                recibirás las instrucciones necesarias
+                para activar tu licencia.
+
             </p>
+
+
+        </details>
+
+
+        <details>
+
+
+            <summary>
+
+                ¿OrdenFix seguirá recibiendo mejoras?
+
+            </summary>
+
+
+            <p>
+
+                OrdenFix está pensado para seguir
+                incorporando nuevas herramientas,
+                mejoras y funciones.
+
+            </p>
+
 
         </details>
 
@@ -1121,22 +1458,33 @@
 
 
 <!-- =========================
-     FOOTER
+     PIE DE PÁGINA
 ========================= -->
 
 <footer>
 
+
     <strong>
+
         OrdenFix
+
     </strong>
 
-    <p>
-        Gestión sencilla de archivos.
-    </p>
 
     <p>
-        © 2026 OrdenFix. Todos los derechos reservados.
+
+        Gestión sencilla de archivos.
+
     </p>
+
+
+    <p>
+
+        © 2026 OrdenFix.
+        Todos los derechos reservados.
+
+    </p>
+
 
 </footer>
 
