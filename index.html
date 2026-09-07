@@ -300,80 +300,175 @@
            CARACTERÍSTICAS
         ========================= */
 
-        .features {
+      <section id="caracteristicas" class="features">
+    <div class="container">
 
-            display: grid;
+        <div class="section-title">
+            <span>CARACTERÍSTICAS</span>
+            <h2>Todo lo que puedes hacer con OrdenFix</h2>
+            <p>
+                Herramientas diseñadas para organizar, administrar,
+                encontrar y convertir tus archivos de forma sencilla.
+            </p>
+        </div>
 
-            grid-template-columns:
-                repeat(auto-fit, minmax(230px, 1fr));
+        <!-- GESTIÓN DE ARCHIVOS -->
+        <div class="feature-category">
+            <h3>Gestión de archivos</h3>
 
-            gap: 25px;
-        }
+            <div class="feature-grid">
+
+                <div class="feature-card">
+                    <div class="feature-icon">📁</div>
+                    <h4>Mover archivos</h4>
+                    <p>
+                        Organiza automáticamente tus archivos
+                        según su tipo y extensión.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>Copiar archivos</h4>
+                    <p>
+                        Copia varios archivos rápidamente hacia
+                        la carpeta que necesites.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">✏️</div>
+                    <h4>Renombrar archivos</h4>
+                    <p>
+                        Cambia el nombre de múltiples archivos
+                        de manera rápida y ordenada.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🔎</div>
+                    <h4>Buscar duplicados</h4>
+                    <p>
+                        Encuentra archivos duplicados para ayudarte
+                        a liberar espacio y mantener tu información organizada.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">📂</div>
+                    <h4>Buscar carpetas duplicadas</h4>
+                    <p>
+                        Detecta carpetas que contienen información
+                        duplicada dentro de tus unidades.
+                    </p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">🗑️</div>
+                    <h4>Eliminar carpetas vacías</h4>
+                    <p>
+                        Localiza y elimina carpetas que ya no
+                        contienen archivos.
+                    </p>
+                </div>
+
+            </div>
+        </div>
 
 
-        .card {
+        <!-- CONVERSIÓN -->
+        <div class="feature-category">
+            <h3>Conversión de archivos</h3>
 
-            background: white;
+            <div class="feature-grid">
 
-            padding: 32px;
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h4>JPG → PNG</h4>
+                    <p>
+                        Convierte imágenes JPG al formato PNG
+                        de manera sencilla.
+                    </p>
+                </div>
 
-            border-radius: 15px;
+                <div class="feature-card">
+                    <div class="feature-icon">🖼️</div>
+                    <h4>PNG → JPG</h4>
+                    <p>
+                        Convierte imágenes PNG al formato JPG
+                        rápidamente.
+                    </p>
+                </div>
 
-            border: 1px solid #e8ebf0;
+                <div class="feature-card">
+                    <div class="feature-icon">📄</div>
+                    <h4>Imágenes → PDF</h4>
+                    <p>
+                        Convierte tus imágenes en documentos PDF
+                        de forma práctica.
+                    </p>
+                </div>
 
-            box-shadow:
-                0 8px 25px rgba(0, 0, 0, 0.04);
+                <div class="feature-card">
+                    <div class="feature-icon">📑</div>
+                    <h4>PDF → imágenes</h4>
+                    <p>
+                        Convierte páginas de documentos PDF
+                        en imágenes.
+                    </p>
+                </div>
 
-            transition: 0.25s;
-        }
-
-
-        .card:hover {
-
-            transform: translateY(-6px);
-
-            box-shadow:
-                0 15px 35px rgba(0, 0, 0, 0.08);
-        }
-
-
-        .icon {
-
-            width: 52px;
-
-            height: 52px;
-
-            display: flex;
-
-            align-items: center;
-
-            justify-content: center;
-
-            border-radius: 12px;
-
-            background: #eff6ff;
-
-            color: #2563eb;
-
-            font-size: 25px;
-
-            margin-bottom: 22px;
-        }
+            </div>
+        </div>
 
 
-        .card h3 {
+        <!-- HERRAMIENTAS -->
+        <div class="feature-category">
+            <h3>Herramientas adicionales</h3>
 
-            margin-bottom: 10px;
+            <div class="feature-grid">
 
-            font-size: 21px;
-        }
+                <div class="feature-card">
+                    <div class="feature-icon">⚙️</div>
+                    <h4>Automatizaciones</h4>
+                    <p>
+                        Facilita tareas repetitivas mediante
+                        herramientas de automatización.
+                    </p>
+                </div>
 
+                <div class="feature-card">
+                    <div class="feature-icon">🔧</div>
+                    <h4>Configuración</h4>
+                    <p>
+                        Personaliza diferentes opciones del
+                        funcionamiento de OrdenFix.
+                    </p>
+                </div>
 
-        .card p {
+                <div class="feature-card">
+                    <div class="feature-icon">⏹️</div>
+                    <h4>Cancelar operaciones</h4>
+                    <p>
+                        Detén operaciones que se encuentren
+                        ejecutándose cuando sea necesario.
+                    </p>
+                </div>
 
-            color: #667085;
-        }
+                <div class="feature-card">
+                    <div class="feature-icon">📋</div>
+                    <h4>Registro de operaciones</h4>
+                    <p>
+                        Consulta información sobre las tareas
+                        realizadas dentro del programa.
+                    </p>
+                </div>
 
+            </div>
+        </div>
+
+    </div>
+</section>
 
         /* =========================
            CÓMO FUNCIONA
