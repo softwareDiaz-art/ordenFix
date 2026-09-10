@@ -1262,6 +1262,71 @@
 <button onclick="comprarOrdenFix()">
     Comprar OrdenFix — $9.000 COP
 </button>
+        <script>
+
+async function comprarOrdenFix() {
+
+    const email =
+        document.getElementById(
+            "emailCompra"
+        ).value.trim();
+
+    if (!email) {
+
+        alert(
+            "Escribe tu correo electrónico."
+        );
+
+        return;
+    }
+
+    try {
+
+        const respuesta =
+            await fetch(
+                "https://ordenfix-licencias.sebasthian-diaz2019.workers.dev/crear-pago",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email
+                    })
+                }
+            );
+
+        const datos =
+            await respuesta.json();
+
+        if (!respuesta.ok) {
+
+            console.error(datos);
+
+            alert(
+                "No se pudo crear el pago."
+            );
+
+            return;
+        }
+
+        window.location.href =
+            datos.checkout_url;
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            "No se pudo conectar con OrdenFix."
+        );
+    }
+}
+
+</script>
 
 
         <p class="price-description">
