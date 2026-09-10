@@ -17,10 +17,6 @@
 
     <style>
 
-        /* =========================
-           CONFIGURACIÓN GENERAL
-        ========================= */
-
         * {
             margin: 0;
             padding: 0;
@@ -108,11 +104,10 @@
 
 
         /* =========================
-           HERO / PORTADA
+           HERO
         ========================= */
 
         .hero {
-
             min-height: 650px;
 
             display: flex;
@@ -149,7 +144,6 @@
 
 
         .badge {
-
             display: inline-block;
 
             padding: 8px 18px;
@@ -167,7 +161,6 @@
 
 
         .hero h1 {
-
             font-size: clamp(42px, 7vw, 72px);
 
             line-height: 1.08;
@@ -178,12 +171,12 @@
 
         .hero h1 span {
             display: block;
+
             color: #2563eb;
         }
 
 
         .hero p {
-
             max-width: 720px;
 
             margin: auto;
@@ -195,7 +188,6 @@
 
 
         .hero-buttons {
-
             margin-top: 35px;
 
             display: flex;
@@ -209,7 +201,6 @@
 
 
         .button {
-
             display: inline-block;
 
             padding: 15px 28px;
@@ -221,11 +212,16 @@
             font-weight: bold;
 
             transition: 0.25s;
+
+            border: none;
+
+            cursor: pointer;
+
+            font-size: 16px;
         }
 
 
         .button-primary {
-
             background: #2563eb;
 
             color: white;
@@ -236,7 +232,6 @@
 
 
         .button-primary:hover {
-
             background: #1d4ed8;
 
             transform: translateY(-2px);
@@ -244,7 +239,6 @@
 
 
         .button-secondary {
-
             background: white;
 
             color: #172033;
@@ -254,7 +248,6 @@
 
 
         .button-secondary:hover {
-
             border-color: #2563eb;
 
             color: #2563eb;
@@ -266,13 +259,11 @@
         ========================= */
 
         .section {
-
             padding: 90px 7%;
         }
 
 
         .section-header {
-
             text-align: center;
 
             max-width: 720px;
@@ -282,7 +273,6 @@
 
 
         .section-header h2 {
-
             font-size: 38px;
 
             margin-bottom: 15px;
@@ -290,7 +280,6 @@
 
 
         .section-header p {
-
             color: #667085;
 
             font-size: 17px;
@@ -302,7 +291,6 @@
         ========================= */
 
         .features {
-
             display: grid;
 
             grid-template-columns:
@@ -313,7 +301,6 @@
 
 
         .card {
-
             background: white;
 
             padding: 32px;
@@ -330,7 +317,6 @@
 
 
         .card:hover {
-
             transform: translateY(-6px);
 
             box-shadow:
@@ -339,7 +325,6 @@
 
 
         .icon {
-
             width: 52px;
 
             height: 52px;
@@ -363,7 +348,6 @@
 
 
         .card h3 {
-
             margin-bottom: 10px;
 
             font-size: 21px;
@@ -371,7 +355,6 @@
 
 
         .card p {
-
             color: #667085;
         }
 
@@ -381,13 +364,11 @@
         ========================= */
 
         .how {
-
             background: white;
         }
 
 
         .steps {
-
             max-width: 1000px;
 
             margin: auto;
@@ -402,7 +383,6 @@
 
 
         .step {
-
             text-align: center;
 
             padding: 30px;
@@ -416,7 +396,6 @@
 
 
         .number {
-
             width: 55px;
 
             height: 55px;
@@ -442,23 +421,20 @@
 
 
         .step h3 {
-
             margin-bottom: 10px;
         }
 
 
         .step p {
-
             color: #667085;
         }
 
 
         /* =========================
-           POR QUÉ ORDENFIX
+           VENTAJAS
         ========================= */
 
         .why {
-
             background: #111827;
 
             color: white;
@@ -466,13 +442,11 @@
 
 
         .why .section-header p {
-
             color: #cbd5e1;
         }
 
 
         .why-grid {
-
             max-width: 1000px;
 
             margin: auto;
@@ -487,7 +461,6 @@
 
 
         .why-item {
-
             padding: 30px;
 
             border: 1px solid #263244;
@@ -499,13 +472,11 @@
 
 
         .why-item h3 {
-
             margin-bottom: 10px;
         }
 
 
         .why-item p {
-
             color: #cbd5e1;
         }
 
@@ -515,13 +486,11 @@
         ========================= */
 
         .pricing {
-
             background: #eef4ff;
         }
 
 
         .price-card {
-
             max-width: 430px;
 
             margin: auto;
@@ -542,7 +511,6 @@
 
 
         .price-card h3 {
-
             font-size: 26px;
 
             margin-bottom: 10px;
@@ -550,8 +518,7 @@
 
 
         .price {
-
-            font-size: 55px;
+            font-size: 42px;
 
             font-weight: 800;
 
@@ -562,7 +529,6 @@
 
 
         .price-description {
-
             color: #667085;
 
             margin-bottom: 25px;
@@ -570,7 +536,6 @@
 
 
         .price-card ul {
-
             list-style: none;
 
             text-align: left;
@@ -580,7 +545,6 @@
 
 
         .price-card li {
-
             padding: 9px 0;
 
             color: #4b5563;
@@ -588,7 +552,6 @@
 
 
         .price-card li::before {
-
             content: "✓";
 
             color: #2563eb;
@@ -599,11 +562,42 @@
         }
 
 
-        .full-button {
+        /* =========================
+           COMPRA
+        ========================= */
 
+        .purchase-box {
+            margin-top: 25px;
+        }
+
+
+        .purchase-box input {
             width: 100%;
 
-            text-align: center;
+            padding: 14px 15px;
+
+            border: 1px solid #d1d5db;
+
+            border-radius: 9px;
+
+            font-size: 16px;
+
+            outline: none;
+
+            margin-bottom: 12px;
+        }
+
+
+        .purchase-box input:focus {
+            border-color: #2563eb;
+
+            box-shadow:
+                0 0 0 3px rgba(37, 99, 235, 0.10);
+        }
+
+
+        .purchase-box button {
+            width: 100%;
         }
 
 
@@ -612,7 +606,6 @@
         ========================= */
 
         .faq {
-
             max-width: 800px;
 
             margin: auto;
@@ -620,7 +613,6 @@
 
 
         details {
-
             background: white;
 
             border: 1px solid #e5e7eb;
@@ -634,7 +626,6 @@
 
 
         summary {
-
             cursor: pointer;
 
             font-weight: bold;
@@ -642,7 +633,6 @@
 
 
         details p {
-
             margin-top: 15px;
 
             color: #667085;
@@ -654,7 +644,6 @@
         ========================= */
 
         footer {
-
             background: #111827;
 
             color: white;
@@ -666,7 +655,6 @@
 
 
         footer p {
-
             color: #9ca3af;
 
             margin-top: 8px;
@@ -680,19 +668,16 @@
         @media (max-width: 700px) {
 
             header {
-
                 padding: 15px 5%;
             }
 
 
             nav {
-
                 display: none;
             }
 
 
             .hero {
-
                 min-height: 580px;
 
                 padding: 70px 20px;
@@ -700,31 +685,26 @@
 
 
             .hero h1 {
-
                 font-size: 45px;
             }
 
 
             .hero p {
-
                 font-size: 18px;
             }
 
 
             .section {
-
                 padding: 65px 5%;
             }
 
 
             .section-header h2 {
-
                 font-size: 31px;
             }
 
 
             .price-card {
-
                 padding: 32px 25px;
             }
 
@@ -793,7 +773,6 @@
 
     <div class="hero-content">
 
-
         <div class="badge">
 
             Software para gestión de archivos
@@ -823,7 +802,6 @@
 
         <div class="hero-buttons">
 
-
             <a href="#precio"
                class="button button-primary">
 
@@ -839,9 +817,7 @@
 
             </a>
 
-
         </div>
-
 
     </div>
 
@@ -854,7 +830,6 @@
 
 <section id="caracteristicas"
          class="section">
-
 
     <div class="section-header">
 
@@ -998,19 +973,17 @@
 
         </div>
 
-
     </div>
 
 </section>
 
 
 <!-- =========================
-     CÓMO FUNCIONA EL PROGRAMA
+     CÓMO FUNCIONA
 ========================= -->
 
 <section id="como-funciona"
          class="section how">
-
 
     <div class="section-header">
 
@@ -1106,7 +1079,6 @@
 
         </div>
 
-
     </div>
 
 </section>
@@ -1118,7 +1090,6 @@
 
 <section id="por-que"
          class="section why">
-
 
     <div class="section-header">
 
@@ -1205,14 +1176,13 @@
 
         </div>
 
-
     </div>
 
 </section>
 
 
 <!-- =========================
-     PRECIO
+     PRECIO Y COMPRA
 ========================= -->
 
 <section id="precio"
@@ -1248,85 +1218,11 @@
         </h3>
 
 
-        <!--
-            CAMBIAREMOS ESTE PRECIO
-            CUANDO DEFINAMOS EL VALOR FINAL.
-        -->
+        <div class="price">
 
-<input
-    type="email"
-    id="emailCompra"
-    placeholder="Correo electrónico"
->
+            $9.000 COP
 
-<button onclick="comprarOrdenFix()">
-    Comprar OrdenFix — $9.000 COP
-</button>
-        <script>
-
-async function comprarOrdenFix() {
-
-    const email =
-        document.getElementById(
-            "emailCompra"
-        ).value.trim();
-
-    if (!email) {
-
-        alert(
-            "Escribe tu correo electrónico."
-        );
-
-        return;
-    }
-
-    try {
-
-        const respuesta =
-            await fetch(
-                "https://ordenfix-licencias.sebasthian-diaz2019.workers.dev/crear-pago",
-                {
-                    method: "POST",
-
-                    headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({
-                        email: email
-                    })
-                }
-            );
-
-        const datos =
-            await respuesta.json();
-
-        if (!respuesta.ok) {
-
-            console.error(datos);
-
-            alert(
-                "No se pudo crear el pago."
-            );
-
-            return;
-        }
-
-        window.location.href =
-            datos.checkout_url;
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "No se pudo conectar con OrdenFix."
-        );
-    }
-}
-
-</script>
+        </div>
 
 
         <p class="price-description">
@@ -1338,49 +1234,46 @@ async function comprarOrdenFix() {
 
         <ul>
 
-
             <li>
-
                 Acceso a las herramientas
-
             </li>
 
-
             <li>
-
                 Activación mediante licencia
-
             </li>
 
-
             <li>
-
                 Soporte de activación
-
             </li>
-
 
             <li>
-
                 Actualizaciones del programa
-
             </li>
-
 
         </ul>
 
 
-        <!--
-            ESTE BOTÓN SE CONECTARÁ
-            AL SISTEMA DE PAGO MÁS ADELANTE.
-        -->
+        <div class="purchase-box">
 
-        <a href="#"
-           class="button button-primary full-button">
+            <input
+                type="email"
+                id="emailCompra"
+                placeholder="Correo electrónico"
+                autocomplete="email"
+            >
 
-            Comprar ahora
 
-        </a>
+            <button
+                type="button"
+                class="button button-primary"
+                onclick="comprarOrdenFix()"
+            >
+
+                Comprar OrdenFix — $9.000 COP
+
+            </button>
+
+        </div>
 
 
     </div>
@@ -1394,7 +1287,6 @@ async function comprarOrdenFix() {
 
 <section id="faq"
          class="section">
-
 
     <div class="section-header">
 
@@ -1412,7 +1304,6 @@ async function comprarOrdenFix() {
 
         <details>
 
-
             <summary>
 
                 ¿Qué es OrdenFix?
@@ -1428,12 +1319,10 @@ async function comprarOrdenFix() {
 
             </p>
 
-
         </details>
 
 
         <details>
-
 
             <summary>
 
@@ -1452,12 +1341,10 @@ async function comprarOrdenFix() {
 
             </p>
 
-
         </details>
 
 
         <details>
-
 
             <summary>
 
@@ -1474,12 +1361,10 @@ async function comprarOrdenFix() {
 
             </p>
 
-
         </details>
 
 
         <details>
-
 
             <summary>
 
@@ -1496,12 +1381,10 @@ async function comprarOrdenFix() {
 
             </p>
 
-
         </details>
 
 
         <details>
-
 
             <summary>
 
@@ -1518,7 +1401,6 @@ async function comprarOrdenFix() {
 
             </p>
 
-
         </details>
 
 
@@ -1532,7 +1414,6 @@ async function comprarOrdenFix() {
 ========================= -->
 
 <footer>
-
 
     <strong>
 
@@ -1555,14 +1436,130 @@ async function comprarOrdenFix() {
 
     </p>
 
-
 </footer>
+
+
+<!-- =========================
+     SISTEMA DE COMPRA
+========================= -->
+
+<script>
+
+async function comprarOrdenFix() {
+
+    const campoEmail =
+        document.getElementById("emailCompra");
+
+    const email =
+        campoEmail.value.trim();
+
+
+    if (!email) {
+
+        alert(
+            "Escribe tu correo electrónico."
+        );
+
+        campoEmail.focus();
+
+        return;
+    }
+
+
+    if (!email.includes("@") || !email.includes(".")) {
+
+        alert(
+            "Escribe un correo electrónico válido."
+        );
+
+        campoEmail.focus();
+
+        return;
+    }
+
+
+    try {
+
+        const respuesta =
+            await fetch(
+                "https://ordenfix-licencias.sebasthian-diaz2019.workers.dev/crear-pago",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+                        email: email
+                    })
+                }
+            );
+
+
+        const datos =
+            await respuesta.json();
+
+
+        if (!respuesta.ok) {
+
+            console.error(
+                "Respuesta del servidor:",
+                datos
+            );
+
+            alert(
+                datos.error ||
+                "No se pudo crear el pago."
+            );
+
+            return;
+        }
+
+
+        if (!datos.checkout_url) {
+
+            console.error(
+                "Respuesta sin checkout_url:",
+                datos
+            );
+
+            alert(
+                "El servidor no devolvió el enlace de pago."
+            );
+
+            return;
+        }
+
+
+        window.location.href =
+            datos.checkout_url;
+
+
+    } catch (error) {
+
+        console.error(
+            "Error de conexión:",
+            error
+        );
+
+        alert(
+            "No se pudo conectar con OrdenFix. Inténtalo nuevamente."
+        );
+
+    }
+
+}
+
+</script>
 
 
 </body>
 
 </html>
 ```
+
 
 >
 
