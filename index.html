@@ -1,407 +1,302 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OrdenFix | Gestión de archivos</title>
+    <title>OrdenFix - Automatiza y organiza tus archivos</title>
+
+    <meta name="description"
+          content="OrdenFix: herramienta para organizar, automatizar y administrar tus archivos de forma sencilla.">
 
     <style>
+
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        html {
-            scroll-behavior: smooth;
         }
 
         body {
+            margin: 0;
             font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fb;
-            color: #172033;
-            line-height: 1.6;
+            background: #f4f1eb;
+            color: #222;
         }
 
         header {
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
+            background: #222;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
         }
 
-        .nav {
-            max-width: 1200px;
-            margin: auto;
-            padding: 18px 25px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+        header h1 {
+            margin: 0;
+            font-size: 38px;
         }
 
-        .logo {
-            font-size: 30px;
-            font-weight: 800;
-            color: #111827;
+        header p {
+            margin-top: 10px;
+            font-size: 17px;
         }
 
-        .logo span {
-            color: #2563eb;
+        nav {
+            background: #333;
+            text-align: center;
+            padding: 12px;
         }
 
         nav a {
+            color: white;
             text-decoration: none;
-            color: #374151;
-            margin-left: 25px;
-            font-weight: 600;
+            margin: 0 15px;
+            font-weight: bold;
         }
 
         nav a:hover {
-            color: #2563eb;
+            text-decoration: underline;
         }
 
-        .btn {
-            display: inline-block;
-            padding: 13px 25px;
-            border-radius: 9px;
-            background: #2563eb;
-            color: white !important;
-            text-decoration: none;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            transition: 0.2s;
-        }
-
-        .btn:hover {
-            background: #1d4ed8;
-            transform: translateY(-1px);
+        .contenedor {
+            max-width: 1000px;
+            margin: auto;
+            padding: 30px 20px;
         }
 
         section {
-            max-width: 1150px;
-            margin: auto;
-            padding: 80px 25px;
-        }
-
-        .hero {
-            min-height: 650px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 850px;
-        }
-
-        .hero h1 {
-            font-size: 58px;
-            line-height: 1.1;
+            background: white;
             margin-bottom: 25px;
-            color: #111827;
-        }
-
-        .hero h1 span {
-            color: #2563eb;
-        }
-
-        .hero p {
-            font-size: 21px;
-            color: #4b5563;
-            margin-bottom: 35px;
-        }
-
-        .section-title {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .section-title h2 {
-            font-size: 38px;
-            margin-bottom: 12px;
-            color: #111827;
-        }
-
-        .section-title p {
-            color: #6b7280;
-        }
-
-        .how-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .how-card {
-            background: white;
             padding: 30px;
-            border-radius: 15px;
-            border: 1px solid #e5e7eb;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+
+        section h2 {
             text-align: center;
+            margin-top: 0;
+            font-size: 28px;
         }
 
-        .number {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 20px;
-            border-radius: 50%;
-            background: #2563eb;
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 21px;
-            font-weight: bold;
+        .inicio {
+            text-align: center;
+            padding: 45px 30px;
         }
 
-        .how-card h3 {
-            margin-bottom: 10px;
-            color: #111827;
+        .inicio h2 {
+            font-size: 32px;
         }
 
-        .how-card p {
-            color: #6b7280;
+        .inicio p {
+            font-size: 18px;
+            line-height: 1.7;
         }
 
-        .features {
+        .caracteristicas {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 22px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 18px;
+            margin-top: 25px;
         }
 
-        .feature {
-            background: white;
-            padding: 28px;
-            border-radius: 14px;
-            border: 1px solid #e5e7eb;
+        .caracteristica {
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            padding: 20px;
+            background: #fafafa;
         }
 
-        .feature h3 {
-            margin-bottom: 10px;
-            color: #111827;
+        .caracteristica h3 {
+            margin-top: 0;
         }
 
-        .feature p {
-            color: #6b7280;
+        .caracteristica p {
+            line-height: 1.5;
+            margin-bottom: 0;
         }
 
-        .price-box {
-            max-width: 500px;
+        .pasos {
+            max-width: 750px;
             margin: auto;
-            background: white;
-            border: 2px solid #2563eb;
-            border-radius: 18px;
-            padding: 45px 35px;
-            text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
-        .price {
-            font-size: 48px;
-            font-weight: 800;
-            color: #111827;
+        .paso {
+            margin-bottom: 20px;
+            padding: 18px;
+            background: #f7f7f7;
+            border-radius: 10px;
+        }
+
+        .paso strong {
+            display: block;
             margin-bottom: 8px;
         }
 
-        .price-subtitle {
-            color: #6b7280;
-            margin-bottom: 30px;
+        .precio {
+            text-align: center;
         }
 
-        .benefits {
-            list-style: none;
-            text-align: left;
-            margin-bottom: 30px;
-        }
-
-        .benefits li {
-            margin: 14px 0;
-            color: #374151;
-        }
-
-        .benefits li::before {
-            content: "✓";
-            color: #2563eb;
+        .precio-valor {
+            font-size: 38px;
             font-weight: bold;
-            margin-right: 10px;
+            margin: 20px 0;
         }
 
-        .email-box {
+        .campo-email {
             width: 100%;
-            padding: 15px;
-            border: 1px solid #d1d5db;
-            border-radius: 9px;
+            max-width: 450px;
+            padding: 13px;
             font-size: 16px;
-            margin-bottom: 15px;
-            outline: none;
+            border: 1px solid #bbb;
+            border-radius: 8px;
+            margin: 10px auto;
+            display: block;
         }
 
-        .email-box:focus {
-            border-color: #2563eb;
-        }
-
-        .buy-button {
-            width: 100%;
-            padding: 16px;
+        .boton-comprar {
+            display: inline-block;
+            padding: 14px 28px;
             border: none;
-            border-radius: 9px;
-            background: #2563eb;
+            border-radius: 8px;
+            background: #222;
             color: white;
             font-size: 17px;
             font-weight: bold;
             cursor: pointer;
+            margin-top: 10px;
         }
 
-        .buy-button:hover {
-            background: #1d4ed8;
+        .boton-comprar:hover {
+            background: #444;
         }
 
-        .buy-button:disabled {
-            background: #93c5fd;
-            cursor: wait;
+        .boton-comprar:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
         }
 
-        .license-result {
-            display: none;
+        .info-compra {
+            margin: 25px auto 0;
             max-width: 650px;
-            margin: 30px auto 0;
-            padding: 30px;
-            background: white;
-            border: 2px solid #2563eb;
-            border-radius: 15px;
+            padding: 20px;
+            border-radius: 10px;
+            background: #f5f5f5;
             text-align: center;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
 
-        .license-result h3 {
-            color: #111827;
-            margin-bottom: 12px;
+        .info-compra h3 {
+            margin-top: 0;
         }
 
-        .license-result p {
-            color: #6b7280;
-            margin-bottom: 15px;
+        .info-compra p {
+            line-height: 1.6;
         }
 
-        .license-key {
+        .info-compra a {
+            font-weight: bold;
+            color: #222;
+        }
+
+        .resultado {
+            margin-top: 25px;
+            text-align: center;
+        }
+
+        .licencia {
             display: inline-block;
+            margin-top: 12px;
             padding: 15px 20px;
-            background: #f3f4f6;
-            border-radius: 9px;
-            font-size: 22px;
+            background: #eee;
+            border-radius: 8px;
+            font-size: 20px;
             font-weight: bold;
             letter-spacing: 1px;
-            color: #111827;
-            margin: 10px 0 20px;
+            word-break: break-word;
         }
 
-        .copy-button {
-            display: block;
-            margin: 0 auto 15px;
-            padding: 11px 22px;
-            border: none;
-            border-radius: 8px;
-            background: #111827;
-            color: white;
-            font-weight: bold;
-            cursor: pointer;
-        }
-
-        .copy-button:hover {
-            background: #374151;
-        }
-
-        .license-status {
-            color: #2563eb !important;
+        .error {
+            color: #b00020;
             font-weight: bold;
         }
 
-        .license-error {
-            display: none;
-            max-width: 650px;
-            margin: 30px auto 0;
-            padding: 25px;
-            background: white;
-            border: 1px solid #e5e7eb;
-            border-radius: 15px;
+        .esperando {
+            color: #555;
+        }
+
+        .descarga-ordenfix {
+            margin-top: 30px;
             text-align: center;
+            padding: 25px;
+            background: #f7f7f7;
+            border-radius: 10px;
         }
 
-        .license-error h3 {
-            margin-bottom: 10px;
-            color: #111827;
+        .descarga-ordenfix h3 {
+            margin-top: 0;
         }
 
-        .license-error p {
-            color: #6b7280;
+        .boton-descarga {
+            display: inline-block;
+            padding: 13px 24px;
+            margin-top: 10px;
+            border-radius: 8px;
+            background: #222;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
         }
 
-        .faq {
-            max-width: 800px;
-            margin: auto;
+        .boton-descarga:hover {
+            background: #444;
         }
 
         .faq-item {
-            background: white;
-            padding: 25px;
-            margin-bottom: 15px;
-            border-radius: 12px;
-            border: 1px solid #e5e7eb;
+            margin-bottom: 20px;
         }
 
         .faq-item h3 {
             margin-bottom: 8px;
-            color: #111827;
         }
 
         .faq-item p {
-            color: #6b7280;
+            line-height: 1.6;
+            margin-top: 0;
         }
 
         footer {
-            background: #111827;
-            color: #d1d5db;
+            background: #222;
+            color: white;
             text-align: center;
-            padding: 35px 20px;
+            padding: 25px 15px;
+            margin-top: 30px;
         }
 
-        footer strong {
+        footer a {
             color: white;
         }
 
-        @media (max-width: 800px) {
+        @media (max-width: 600px) {
 
-            .nav {
-                flex-direction: column;
-                gap: 15px;
+            header h1 {
+                font-size: 30px;
             }
 
             nav a {
-                margin: 0 8px;
+                display: inline-block;
+                margin: 5px 8px;
             }
 
-            .hero h1 {
-                font-size: 40px;
+            section {
+                padding: 22px 18px;
             }
 
-            .how-grid,
-            .features {
-                grid-template-columns: 1fr;
+            .inicio h2 {
+                font-size: 26px;
             }
 
-            .price {
-                font-size: 40px;
-            }
-
-            .license-key {
-                font-size: 17px;
+            .precio-valor {
+                font-size: 32px;
             }
         }
+
     </style>
 </head>
 
@@ -409,400 +304,356 @@
 
 <header>
 
-    <div class="nav">
+    <h1>OrdenFix</h1>
 
-        <div class="logo">
-            Orden<span>Fix</span>
-        </div>
-
-        <nav>
-
-            <a href="#funciona">
-                Cómo funciona
-            </a>
-
-            <a href="#caracteristicas">
-                Características
-            </a>
-
-            <a href="#precio">
-                Precio
-            </a>
-
-            <a href="#faq">
-                FAQ
-            </a>
-
-            <a href="#precio" class="btn">
-                Comprar
-            </a>
-
-        </nav>
-
-    </div>
+    <p>
+        Organiza y administra tus archivos de forma sencilla
+    </p>
 
 </header>
 
 
-<section class="hero">
+<nav>
 
-    <div class="hero-content">
+    <a href="#inicio">Inicio</a>
+    <a href="#caracteristicas">Características</a>
+    <a href="#como-funciona">Cómo funciona</a>
+    <a href="#precio">Comprar</a>
+    <a href="#faq">FAQ</a>
 
-        <h1>
-            Controla tus archivos con
-            <span>OrdenFix</span>
-        </h1>
-
-        <p>
-            Una herramienta para gestionar, organizar,
-            mover, copiar, renombrar y administrar tus
-            archivos de forma rápida y sencilla.
-        </p>
-
-        <a href="#precio" class="btn">
-            Comprar OrdenFix
-        </a>
-
-    </div>
-
-</section>
+</nav>
 
 
-<section id="funciona">
+<div class="contenedor">
 
-    <div class="section-title">
 
-        <h2>
-            ¿Cómo funciona OrdenFix?
-        </h2>
+    <!-- INICIO -->
+
+    <section id="inicio" class="inicio">
+
+        <h2>OrdenFix</h2>
 
         <p>
-            Herramientas diseñadas para facilitar
-            la administración de tus archivos.
+            Una herramienta para ayudarte a organizar, administrar
+            y trabajar con tus archivos de manera más rápida y sencilla.
         </p>
 
-    </div>
+        <p>
+            Automatiza tareas repetitivas y mantén tus carpetas
+            mucho más organizadas.
+        </p>
+
+    </section>
 
 
-    <div class="how-grid">
 
-        <div class="how-card">
+    <!-- CARACTERÍSTICAS -->
 
-            <div class="number">
-                1
+    <section id="caracteristicas">
+
+        <h2>Características</h2>
+
+        <div class="caracteristicas">
+
+            <div class="caracteristica">
+
+                <h3>Renombrado de archivos</h3>
+
+                <p>
+                    Cambia los nombres de múltiples archivos
+                    de forma rápida y organizada.
+                </p>
+
             </div>
 
-            <h3>
-                Selecciona
-            </h3>
 
-            <p>
-                Elige la carpeta o los archivos
-                sobre los que quieres trabajar.
-            </p>
+            <div class="caracteristica">
 
-        </div>
+                <h3>Mover archivos</h3>
 
+                <p>
+                    Mueve archivos automáticamente hacia
+                    las carpetas que necesites.
+                </p>
 
-        <div class="how-card">
-
-            <div class="number">
-                2
             </div>
 
-            <h3>
-                Elige una herramienta
-            </h3>
 
-            <p>
-                Utiliza la función que necesitas
-                para administrar tus archivos.
-            </p>
+            <div class="caracteristica">
 
-        </div>
+                <h3>Copiar archivos</h3>
 
+                <p>
+                    Realiza copias de archivos de forma
+                    sencilla y rápida.
+                </p>
 
-        <div class="how-card">
-
-            <div class="number">
-                3
             </div>
 
-            <h3>
-                Ejecuta la acción
-            </h3>
 
-            <p>
-                OrdenFix realiza la operación
-                y te muestra el resultado.
-            </p>
+            <div class="caracteristica">
+
+                <h3>Buscar duplicados</h3>
+
+                <p>
+                    Encuentra archivos duplicados para
+                    ayudarte a mantener tus carpetas organizadas.
+                </p>
+
+            </div>
+
+
+            <div class="caracteristica">
+
+                <h3>Carpetas duplicadas</h3>
+
+                <p>
+                    Detecta carpetas duplicadas dentro
+                    de tus ubicaciones seleccionadas.
+                </p>
+
+            </div>
+
+
+            <div class="caracteristica">
+
+                <h3>Eliminar carpetas vacías</h3>
+
+                <p>
+                    Localiza y elimina carpetas que
+                    no contienen archivos.
+                </p>
+
+            </div>
+
+
+            <div class="caracteristica">
+
+                <h3>Conversión de PDF</h3>
+
+                <p>
+                    Trabaja con herramientas para
+                    convertir y administrar documentos PDF.
+                </p>
+
+            </div>
+
+
+            <div class="caracteristica">
+
+                <h3>Conversión de imágenes</h3>
+
+                <p>
+                    Convierte imágenes entre diferentes
+                    formatos compatibles.
+                </p>
+
+            </div>
+
+
+            <div class="caracteristica">
+
+                <h3>Configuración</h3>
+
+                <p>
+                    Personaliza diferentes opciones
+                    del programa según tus necesidades.
+                </p>
+
+            </div>
+
+
+            <div class="caracteristica">
+
+                <h3>Tareas recientes</h3>
+
+                <p>
+                    Consulta las tareas realizadas
+                    recientemente dentro del programa.
+                </p>
+
+            </div>
 
         </div>
 
-    </div>
-
-</section>
+    </section>
 
 
-<section id="caracteristicas">
 
-    <div class="section-title">
+    <!-- CÓMO FUNCIONA -->
 
-        <h2>
-            Todo lo que puedes hacer
-        </h2>
+    <section id="como-funciona">
+
+        <h2>Cómo funciona</h2>
+
+        <div class="pasos">
+
+            <div class="paso">
+
+                <strong>1. Selecciona tus archivos o carpetas</strong>
+
+                <span>
+                    Indica a OrdenFix dónde se encuentran
+                    los archivos que deseas administrar.
+                </span>
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>2. Elige la tarea</strong>
+
+                <span>
+                    Selecciona la función que necesitas,
+                    como renombrar, mover, copiar o buscar duplicados.
+                </span>
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>3. Ejecuta la tarea</strong>
+
+                <span>
+                    OrdenFix realizará la operación
+                    seleccionada sobre tus archivos.
+                </span>
+
+            </div>
+
+
+            <div class="paso">
+
+                <strong>4. Revisa el resultado</strong>
+
+                <span>
+                    Consulta el resultado de la operación
+                    y las tareas realizadas.
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- PRECIO / COMPRA -->
+
+    <section id="precio" class="precio">
+
+        <h2>Comprar OrdenFix</h2>
 
         <p>
-            Herramientas para diferentes tareas
-            de administración de archivos.
+            Licencia permanente
         </p>
 
-    </div>
-
-
-    <div class="features">
-
-        <div class="feature">
-            <h3>Renombrado de archivos</h3>
-            <p>
-                Cambia nombres de múltiples archivos
-                de forma rápida y organizada.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Mover archivos</h3>
-            <p>
-                Organiza archivos y muévelos hacia
-                las carpetas que necesites.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Copiar archivos</h3>
-            <p>
-                Crea copias de tus archivos
-                en otra ubicación.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Buscar duplicados</h3>
-            <p>
-                Encuentra archivos duplicados para
-                ayudarte a mantener tus carpetas
-                organizadas.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Carpetas duplicadas</h3>
-            <p>
-                Identifica carpetas duplicadas
-                para facilitar su administración.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Eliminar carpetas vacías</h3>
-            <p>
-                Detecta y elimina carpetas que
-                ya no contienen archivos.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Conversión de imágenes</h3>
-            <p>
-                Convierte imágenes entre diferentes
-                formatos disponibles en OrdenFix.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Imágenes a PDF</h3>
-            <p>
-                Reúne imágenes y genera documentos
-                PDF de manera sencilla.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Automatizaciones</h3>
-            <p>
-                Simplifica tareas repetitivas mediante
-                las herramientas de automatización
-                disponibles.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Gestión de archivos</h3>
-            <p>
-                Centraliza diferentes operaciones
-                de administración desde una sola
-                aplicación.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Configuración</h3>
-            <p>
-                Personaliza diferentes opciones
-                de funcionamiento del programa.
-            </p>
-        </div>
-
-        <div class="feature">
-            <h3>Historial de tareas</h3>
-            <p>
-                Consulta las operaciones recientes
-                realizadas dentro de OrdenFix.
-            </p>
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="precio">
-
-    <div class="section-title">
-
-        <h2>
-            Licencia de OrdenFix
-        </h2>
-
-        <p>
-            Compra una licencia permanente.
-        </p>
-
-    </div>
-
-
-    <div class="price-box">
-
-        <div class="price">
+        <div class="precio-valor">
             $9.000 COP
         </div>
-
-        <div class="price-subtitle">
-            Licencia de OrdenFix
-        </div>
-
-
-        <ul class="benefits">
-
-            <li>
-                Acceso a las herramientas
-            </li>
-
-            <li>
-                Activación mediante licencia
-            </li>
-
-            <li>
-                Soporte de activación
-            </li>
-
-            <li>
-                Actualizaciones del programa
-            </li>
-
-            <li>
-                Licencia permanente
-            </li>
-
-        </ul>
 
 
         <input
             type="email"
             id="emailCompra"
-            class="email-box"
-            placeholder="Correo electrónico"
-            autocomplete="email"
-        >
+            class="campo-email"
+            placeholder="Ingresa tu correo electrónico"
+            autocomplete="email">
 
 
         <button
-            type="button"
             id="botonComprar"
-            class="buy-button"
-            onclick="comprarOrdenFix()"
-        >
+            class="boton-comprar"
+            onclick="comprarOrdenFix()">
+
             Comprar OrdenFix — $9.000 COP
+
         </button>
 
-    </div>
+
+        <!-- INFORMACIÓN DESPUÉS DE LA COMPRA -->
+
+        <div class="info-compra">
+
+            <h3>¿Qué ocurre después de comprar?</h3>
+
+            <p>
+                Una vez que tu pago sea aprobado,
+                tu licencia aparecerá automáticamente
+                en esta misma página.
+            </p>
+
+            <p>
+                Copia la licencia y guárdala.
+                Después abre OrdenFix e introdúcela
+                en la ventana de activación del programa.
+            </p>
+
+            <p>
+
+                <strong>¿Tuviste algún problema?</strong>
+                <br>
+
+                Escríbenos a:
+
+                <a href="mailto:sebasthian.diaz2019@gmail.com">
+                    sebasthian.diaz2019@gmail.com
+                </a>
+
+            </p>
+
+        </div>
 
 
-    <div id="resultadoLicencia" class="license-result">
+        <!-- RESULTADO DE LA LICENCIA -->
 
-        <h3>
-            ¡Pago recibido!
-        </h3>
+        <div id="resultadoLicencia" class="resultado"></div>
 
-        <p>
-            Tu licencia permanente de OrdenFix es:
-        </p>
+        <div id="claveLicencia"></div>
 
-        <div id="claveLicencia" class="license-key"></div>
-
-        <button
-            type="button"
-            class="copy-button"
-            onclick="copiarLicencia()"
-        >
-            Copiar licencia
-        </button>
-
-        <p class="license-status">
-            Guarda esta clave para activar OrdenFix.
-        </p>
-
-    </div>
+        <div id="errorLicencia" class="resultado error"></div>
 
 
-    <div id="errorLicencia" class="license-error">
+        <!-- DESCARGA -->
 
-        <h3 id="tituloErrorLicencia">
-            Procesando tu compra
-        </h3>
+        <div class="descarga-ordenfix">
 
-        <p id="mensajeErrorLicencia">
-            Estamos esperando la confirmación del pago.
-            No cierres esta página.
-        </p>
+            <h3>¿Ya tienes una licencia?</h3>
 
-    </div>
+            <p>
+                Descarga la versión actual de OrdenFix.
+            </p>
 
-</section>
+            <a
+                href="https://github.com/softwarediaz-art/ordenFix/releases/latest/download/OrdenFix-v1.0.0.zip"
+                class="boton-descarga">
 
+                ⬇ Descargar OrdenFix
 
-<section id="faq">
+            </a>
 
-    <div class="section-title">
+        </div>
 
-        <h2>
-            Preguntas frecuentes
-        </h2>
-
-    </div>
+    </section>
 
 
-    <div class="faq">
+
+    <!-- FAQ -->
+
+    <section id="faq">
+
+        <h2>Preguntas frecuentes</h2>
+
 
         <div class="faq-item">
 
-            <h3>
-                ¿La licencia es permanente?
-            </h3>
+            <h3>¿La licencia es permanente?</h3>
 
             <p>
-                Sí. La licencia adquirida para
-                OrdenFix es permanente.
+                Sí. La licencia adquirida es permanente.
             </p>
 
         </div>
@@ -810,14 +661,12 @@
 
         <div class="faq-item">
 
-            <h3>
-                ¿Cómo recibo mi licencia?
-            </h3>
+            <h3>¿Dónde aparece mi licencia?</h3>
 
             <p>
-                Después de completar y aprobar el pago,
-                la licencia aparecerá directamente
-                en esta página.
+                Después de que Mercado Pago confirme
+                el pago, la licencia aparecerá automáticamente
+                en esta misma página.
             </p>
 
         </div>
@@ -825,14 +674,11 @@
 
         <div class="faq-item">
 
-            <h3>
-                ¿Cómo activo OrdenFix?
-            </h3>
+            <h3>¿Qué hago con la licencia?</h3>
 
             <p>
-                Introduce la clave de licencia
-                mostrada después de la compra
-                dentro del programa OrdenFix.
+                Abre OrdenFix, entra en la opción de activación
+                e introduce la clave recibida.
             </p>
 
         </div>
@@ -840,30 +686,51 @@
 
         <div class="faq-item">
 
-            <h3>
-                ¿Qué métodos de pago puedo utilizar?
-            </h3>
+            <h3>¿Puedo descargar OrdenFix antes de comprar?</h3>
 
             <p>
-                El pago se procesa mediante
-                Mercado Pago.
+                Sí. El programa puede descargarse desde
+                el botón de descarga disponible en esta página.
             </p>
 
         </div>
 
-    </div>
 
-</section>
+        <div class="faq-item">
+
+            <h3>¿Dónde puedo pedir soporte?</h3>
+
+            <p>
+                Puedes escribir a:
+
+                <a href="mailto:sebasthian.diaz2019@gmail.com">
+                    sebasthian.diaz2019@gmail.com
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
 
 
 <footer>
 
     <p>
-        © 2026 <strong>OrdenFix</strong>.
-        Todos los derechos reservados.
+        © 2026 OrdenFix
+    </p>
+
+    <p>
+        Soporte:
+        <a href="mailto:sebasthian.diaz2019@gmail.com">
+            sebasthian.diaz2019@gmail.com
+        </a>
     </p>
 
 </footer>
+
 
 
 <script>
@@ -872,9 +739,9 @@
         "https://ordenfix-licencias.sebasthian-diaz2019.workers.dev";
 
 
-    // ==========================================
+    // --------------------------------------------------
     // COMPRAR ORDENFIX
-    // ==========================================
+    // --------------------------------------------------
 
     async function comprarOrdenFix() {
 
@@ -884,15 +751,25 @@
         const boton =
             document.getElementById("botonComprar");
 
+        const error =
+            document.getElementById("errorLicencia");
+
+        const resultado =
+            document.getElementById("resultadoLicencia");
+
+
         const email =
             emailInput.value.trim();
 
 
+        error.innerHTML = "";
+        resultado.innerHTML = "";
+
+
         if (!email) {
 
-            alert(
-                "Escribe tu correo electrónico."
-            );
+            error.innerHTML =
+                "Ingresa tu correo electrónico.";
 
             emailInput.focus();
 
@@ -900,11 +777,10 @@
         }
 
 
-        if (!emailInput.checkValidity()) {
+        if (!email.includes("@")) {
 
-            alert(
-                "Escribe un correo electrónico válido."
-            );
+            error.innerHTML =
+                "Ingresa un correo electrónico válido.";
 
             emailInput.focus();
 
@@ -914,15 +790,15 @@
 
         boton.disabled = true;
 
-        boton.textContent =
-            "Conectando con Mercado Pago...";
+        boton.innerText =
+            "Preparando pago...";
 
 
         try {
 
             const respuesta =
                 await fetch(
-                    WORKER_URL + "/crear-pago",
+                    `${WORKER_URL}/crear-pago`,
                     {
                         method: "POST",
 
@@ -938,147 +814,71 @@
                 );
 
 
-            const texto =
-                await respuesta.text();
-
-
-            let datos;
-
-
-            try {
-
-                datos =
-                    JSON.parse(texto);
-
-            } catch {
-
-                console.error(
-                    "Respuesta no válida:",
-                    texto
-                );
-
-                throw new Error(
-                    "El servidor devolvió una respuesta inválida."
-                );
-            }
-
-
-            console.log(
-                "Respuesta del Worker:",
-                datos
-            );
+            const datos =
+                await respuesta.json();
 
 
             if (!respuesta.ok) {
 
-                alert(
+                throw new Error(
                     datos.error ||
                     "No se pudo crear el pago."
                 );
-
-                return;
             }
 
 
-            /*
-             * El Worker puede devolver init_point
-             * o checkout_url dependiendo de la versión.
-             */
-
-            const enlacePago =
+            const urlPago =
                 datos.checkout_url ||
                 datos.init_point ||
                 datos.sandbox_init_point;
 
 
-            if (!enlacePago) {
+            if (!urlPago) {
 
-                console.error(
-                    "Respuesta completa:",
-                    datos
+                throw new Error(
+                    "Mercado Pago no devolvió el enlace de pago."
                 );
-
-                alert(
-                    "El servidor no devolvió el enlace de pago."
-                );
-
-                return;
             }
 
 
-            boton.textContent =
-                "Redirigiendo a Mercado Pago...";
-
-
             window.location.href =
-                enlacePago;
+                urlPago;
 
+        }
 
-        } catch (error) {
+        catch (errorPago) {
 
             console.error(
-                "Error de conexión:",
-                error
+                "Error al crear pago:",
+                errorPago
             );
 
-            alert(
-                "No se pudo conectar con OrdenFix. Inténtalo nuevamente."
-            );
 
-        } finally {
+            error.innerHTML =
+                errorPago.message ||
+                "No se pudo iniciar el pago.";
 
             boton.disabled = false;
 
-            boton.textContent =
+            boton.innerText =
                 "Comprar OrdenFix — $9.000 COP";
         }
 
     }
 
 
-    // ==========================================
+
+    // --------------------------------------------------
     // CONSULTAR LICENCIA
-    // ==========================================
+    // --------------------------------------------------
 
     async function consultarLicencia(paymentId) {
 
-        const resultado =
-            document.getElementById("resultadoLicencia");
-
-        const error =
-            document.getElementById("errorLicencia");
-
-        const titulo =
-            document.getElementById("tituloErrorLicencia");
-
-        const mensaje =
-            document.getElementById("mensajeErrorLicencia");
-
-        const clave =
-            document.getElementById("claveLicencia");
-
-
-        error.style.display = "block";
-
-        titulo.textContent =
-            "Confirmando tu pago";
-
-        mensaje.textContent =
-            "Estamos verificando el pago y preparando tu licencia.";
-
-
         try {
-
-            /*
-             * IMPORTANTE:
-             * El Worker actual utiliza /obtener-licencia.
-             */
 
             const respuesta =
                 await fetch(
-                    WORKER_URL +
-                    "/obtener-licencia?payment_id=" +
-                    encodeURIComponent(paymentId)
+                    `${WORKER_URL}/obtener-licencia?payment_id=${encodeURIComponent(paymentId)}`
                 );
 
 
@@ -1086,28 +886,14 @@
                 await respuesta.json();
 
 
-            console.log(
-                "Resultado de licencia:",
-                datos
-            );
-
-
             if (
                 respuesta.ok &&
-                datos.ok &&
                 datos.licencia
             ) {
 
-                clave.textContent =
-                    datos.licencia;
-
-
-                error.style.display =
-                    "none";
-
-                resultado.style.display =
-                    "block";
-
+                mostrarLicencia(
+                    datos.licencia
+                );
 
                 return true;
             }
@@ -1115,12 +901,13 @@
 
             return false;
 
+        }
 
-        } catch (errorConsulta) {
+        catch (error) {
 
             console.error(
                 "Error consultando licencia:",
-                errorConsulta
+                error
             );
 
             return false;
@@ -1129,91 +916,35 @@
     }
 
 
-    // ==========================================
-    // COPIAR LICENCIA
-    // ==========================================
 
-    async function copiarLicencia() {
-
-        const clave =
-            document.getElementById("claveLicencia").textContent.trim();
-
-
-        if (!clave) {
-            return;
-        }
-
-
-        try {
-
-            await navigator.clipboard.writeText(clave);
-
-            alert(
-                "Licencia copiada al portapapeles."
-            );
-
-        } catch {
-
-            alert(
-                "No se pudo copiar automáticamente. Selecciona la licencia y cópiala manualmente."
-            );
-        }
-
-    }
-
-
-    // ==========================================
-    // ESPERAR HASTA QUE APAREZCA LA LICENCIA
-    // ==========================================
+    // --------------------------------------------------
+    // ESPERAR LICENCIA
+    // --------------------------------------------------
 
     async function esperarLicencia(paymentId) {
 
-        const error =
-            document.getElementById("errorLicencia");
-
-        const titulo =
-            document.getElementById("tituloErrorLicencia");
-
-        const mensaje =
-            document.getElementById("mensajeErrorLicencia");
-
-
-        error.style.display =
-            "block";
-
-
-        titulo.textContent =
-            "Confirmando tu pago";
-
-
-        mensaje.textContent =
-            "Estamos verificando tu pago. Esto puede tardar unos segundos.";
-
-
-        /*
-         * Hacemos hasta 15 consultas.
-         *
-         * Cada consulta está separada por 2 segundos.
-         *
-         * El endpoint /obtener-licencia también
-         * puede crear la licencia si todavía no
-         * existe en D1.
-         */
-
-        for (
-            let intento = 1;
-            intento <= 15;
-            intento++
-        ) {
-
-            console.log(
-                "Consultando licencia. Intento:",
-                intento
+        const resultado =
+            document.getElementById(
+                "resultadoLicencia"
             );
 
 
+        resultado.innerHTML =
+            "<p class='esperando'>" +
+            "Pago aprobado. Estamos generando tu licencia..." +
+            "</p>";
+
+
+        for (
+            let intento = 0;
+            intento < 15;
+            intento++
+        ) {
+
             const encontrada =
-                await consultarLicencia(paymentId);
+                await consultarLicencia(
+                    paymentId
+                );
 
 
             if (encontrada) {
@@ -1224,27 +955,65 @@
 
             await new Promise(
                 resolve =>
-                    setTimeout(resolve, 2000)
+                    setTimeout(
+                        resolve,
+                        2000
+                    )
             );
 
         }
 
 
-        titulo.textContent =
-            "Pago recibido";
-
-
-        mensaje.textContent =
-            "El pago fue recibido, pero todavía no pudimos mostrar la licencia. No vuelvas a pagar. Conserva esta página y vuelve a intentarlo en unos minutos.";
+        resultado.innerHTML =
+            "<p class='error'>" +
+            "El pago fue recibido, pero la licencia todavía no aparece. " +
+            "Espera unos segundos y vuelve a cargar la página. " +
+            "Si el problema continúa, escríbenos a " +
+            "<a href='mailto:sebasthian.diaz2019@gmail.com'>" +
+            "sebasthian.diaz2019@gmail.com" +
+            "</a>." +
+            "</p>";
 
     }
 
 
-    // ==========================================
-    // DETECTAR REGRESO DE MERCADO PAGO
-    // ==========================================
 
-    async function comprobarRegresoMercadoPago() {
+    // --------------------------------------------------
+    // MOSTRAR LICENCIA
+    // --------------------------------------------------
+
+    function mostrarLicencia(licencia) {
+
+        const resultado =
+            document.getElementById(
+                "resultadoLicencia"
+            );
+
+        const clave =
+            document.getElementById(
+                "claveLicencia"
+            );
+
+
+        resultado.innerHTML =
+            "<h3>Tu licencia de OrdenFix</h3>" +
+            "<p>Guarda esta clave para activar el programa:</p>";
+
+
+        clave.innerHTML =
+            "<div class='licencia'>" +
+            licencia +
+            "</div>";
+
+    }
+
+
+
+    // --------------------------------------------------
+    // DETECTAR REGRESO DE MERCADO PAGO
+    // --------------------------------------------------
+
+    function comprobarRegresoMercadoPago() {
 
         const parametros =
             new URLSearchParams(
@@ -1262,72 +1031,48 @@
             parametros.get("collection_status");
 
 
-        console.log(
-            "Parámetros recibidos de Mercado Pago:",
-            Object.fromEntries(parametros.entries())
-        );
-
-
-        /*
-         * Si la persona simplemente entró a la página
-         * normalmente, no hacemos nada.
-         */
-
         if (!paymentId) {
 
             return;
         }
 
 
-        /*
-         * Pago rechazado.
-         */
-
         if (
-            status === "rejected" ||
-            status === "cancelled"
+            status === "approved" ||
+            status === "approved"
         ) {
 
-            const error =
-                document.getElementById("errorLicencia");
+            esperarLicencia(
+                paymentId
+            );
 
-            const titulo =
-                document.getElementById("tituloErrorLicencia");
-
-            const mensaje =
-                document.getElementById("mensajeErrorLicencia");
-
-
-            error.style.display =
-                "block";
-
-            titulo.textContent =
-                "Pago no completado";
-
-            mensaje.textContent =
-                "El pago no fue aprobado. No se generó ninguna licencia. Puedes volver a intentarlo.";
-
-            return;
         }
 
+        else {
 
-        /*
-         * Pago aprobado o pendiente.
-         *
-         * Consultamos el Worker.
-         */
+            const resultado =
+                document.getElementById(
+                    "resultadoLicencia"
+                );
 
-        await esperarLicencia(paymentId);
+
+            resultado.innerHTML =
+                "<p class='error'>" +
+                "El pago no aparece como aprobado." +
+                "</p>";
+
+        }
 
     }
 
 
-    // ==========================================
-    // EJECUTAR AL CARGAR LA PÁGINA
-    // ==========================================
 
-    document.addEventListener(
-        "DOMContentLoaded",
+    // --------------------------------------------------
+    // EJECUTAR AL CARGAR LA PÁGINA
+    // --------------------------------------------------
+
+    window.addEventListener(
+        "load",
         function () {
 
             comprobarRegresoMercadoPago();
