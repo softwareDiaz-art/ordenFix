@@ -4,454 +4,1175 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>OrdenFix - Organiza tus archivos fácilmente</title>
+    <title>OrdenFix - Organiza, convierte y controla tus archivos</title>
+
+    <meta name="description"
+          content="OrdenFix organiza archivos, encuentra duplicados, renombra, limpia carpetas y permite convertir documentos e imágenes fácilmente.">
 
     <style>
+
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
             font-family: Arial, Helvetica, sans-serif;
-            background: #f5f7fa;
-            color: #222;
+            background: #f5f7fb;
+            color: #172033;
             line-height: 1.6;
         }
 
+        /* =========================
+           HEADER
+        ========================= */
+
         header {
-            background: #111827;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid #e7eaf0;
+        }
+
+        .nav {
+            max-width: 1150px;
+            margin: auto;
+            padding: 16px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 23px;
+            font-weight: 800;
+            color: #111827;
+        }
+
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            border-radius: 13px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
             color: white;
-            padding: 25px 20px;
-            text-align: center;
-        }
-
-        header h1 {
-            font-size: 36px;
-            margin-bottom: 8px;
-        }
-
-        header p {
-            color: #d1d5db;
-            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 22px;
+            box-shadow: 0 7px 20px rgba(99,102,241,.28);
         }
 
         nav {
-            background: white;
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            position: sticky;
-            top: 0;
-            z-index: 10;
+            display: flex;
+            gap: 26px;
         }
 
         nav a {
-            color: #222;
             text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
+            color: #596174;
+            font-weight: 600;
+            transition: .2s;
         }
 
         nav a:hover {
-            color: #2563eb;
+            color: #6366f1;
         }
+
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
-            text-align: center;
-            padding: 80px 20px;
-            background: white;
+            position: relative;
+            overflow: hidden;
+            background:
+                radial-gradient(circle at 10% 20%, rgba(99,102,241,.20), transparent 30%),
+                radial-gradient(circle at 90% 10%, rgba(14,165,233,.18), transparent 28%),
+                linear-gradient(135deg, #eef2ff, #ffffff 55%, #ecfeff);
+
+            padding: 95px 25px 110px;
         }
 
-        .hero h2 {
-            font-size: 42px;
-            margin-bottom: 15px;
+        .hero-container {
+            max-width: 1150px;
+            margin: auto;
+            display: grid;
+            grid-template-columns: 1.1fr .9fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 15px;
+            border-radius: 30px;
+            background: #ffffff;
+            border: 1px solid #dfe3ff;
+            color: #5b5bd6;
+            font-weight: 700;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(70,70,150,.08);
+        }
+
+        .hero h1 {
+            font-size: clamp(42px, 6vw, 68px);
+            line-height: 1.05;
+            letter-spacing: -2px;
+            margin-bottom: 22px;
+            color: #111827;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #6366f1, #8b5cf6, #06b6d4);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero p {
-            max-width: 700px;
-            margin: auto;
+            max-width: 650px;
             font-size: 20px;
-            color: #555;
+            color: #5d6678;
+            margin-bottom: 30px;
         }
 
-        .container {
-            max-width: 1000px;
-            margin: auto;
-            padding: 60px 20px;
+        .hero-buttons {
+            display: flex;
+            gap: 14px;
+            flex-wrap: wrap;
         }
 
-        .section-title {
-            text-align: center;
-            font-size: 32px;
-            margin-bottom: 35px;
-        }
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: white;
-            padding: 25px;
+        .btn {
+            border: none;
+            cursor: pointer;
+            text-decoration: none;
+            padding: 14px 23px;
             border-radius: 12px;
-            box-shadow: 0 3px 15px rgba(0,0,0,.08);
+            font-weight: 700;
+            font-size: 16px;
+            transition: .2s;
+            display: inline-block;
         }
 
-        .card h3 {
+        .btn-primary {
+            background: linear-gradient(135deg, #6366f1, #7c3aed);
+            color: white;
+            box-shadow: 0 10px 25px rgba(99,102,241,.30);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(99,102,241,.38);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #374151;
+            border: 1px solid #dfe3ea;
+        }
+
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            border-color: #a5b4fc;
+        }
+
+        /* =========================
+           HERO VISUAL
+        ========================= */
+
+        .hero-visual {
+            position: relative;
+            min-height: 390px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-card {
+            position: absolute;
+            background: rgba(255,255,255,.93);
+            border: 1px solid #e8eaf2;
+            border-radius: 18px;
+            padding: 18px 20px;
+            box-shadow: 0 20px 50px rgba(30,40,80,.12);
+            font-weight: 700;
+        }
+
+        .folder-main {
+            width: 290px;
+            height: 210px;
+            border-radius: 25px;
+            background: linear-gradient(135deg, #6366f1, #8b5cf6);
+            box-shadow: 0 25px 50px rgba(99,102,241,.32);
+            color: white;
+            padding: 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            transform: rotate(-4deg);
+        }
+
+        .folder-main .big-icon {
+            font-size: 65px;
             margin-bottom: 10px;
         }
 
-        .price-box {
-            max-width: 500px;
+        .folder-main h3 {
+            font-size: 25px;
+        }
+
+        .card-one {
+            top: 25px;
+            right: 15px;
+            color: #059669;
+        }
+
+        .card-two {
+            bottom: 30px;
+            left: 10px;
+            color: #2563eb;
+        }
+
+        .card-three {
+            bottom: 0;
+            right: 5px;
+            color: #dc2626;
+        }
+
+        /* =========================
+           FEATURES
+        ========================= */
+
+        .section {
+            max-width: 1150px;
+            margin: auto;
+            padding: 90px 25px;
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: auto auto 45px;
+        }
+
+        .section-header h2 {
+            font-size: 40px;
+            margin-bottom: 12px;
+            color: #111827;
+        }
+
+        .section-header p {
+            color: #697386;
+            font-size: 18px;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+
+        .feature {
+            background: white;
+            padding: 25px;
+            border-radius: 20px;
+            border: 1px solid #e7eaf0;
+            box-shadow: 0 10px 30px rgba(20,30,60,.05);
+            transition: .25s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature::after {
+            content: "";
+            position: absolute;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: rgba(99,102,241,.06);
+            right: -45px;
+            bottom: -45px;
+        }
+
+        .feature:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 18px 35px rgba(20,30,60,.10);
+        }
+
+        .feature-icon {
+            width: 55px;
+            height: 55px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 27px;
+            margin-bottom: 17px;
+            background: #eef2ff;
+        }
+
+        .feature:nth-child(2) .feature-icon {
+            background: #fff7ed;
+        }
+
+        .feature:nth-child(3) .feature-icon {
+            background: #ecfeff;
+        }
+
+        .feature:nth-child(4) .feature-icon {
+            background: #f0fdf4;
+        }
+
+        .feature:nth-child(5) .feature-icon {
+            background: #fef2f2;
+        }
+
+        .feature:nth-child(6) .feature-icon {
+            background: #fdf4ff;
+        }
+
+        .feature:nth-child(7) .feature-icon {
+            background: #eff6ff;
+        }
+
+        .feature:nth-child(8) .feature-icon {
+            background: #fefce8;
+        }
+
+        .feature h3 {
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .feature p {
+            color: #687286;
+            font-size: 14px;
+        }
+
+        /* =========================
+           HIGHLIGHT
+        ========================= */
+
+        .highlight {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 55px;
+            border-radius: 30px;
+            background: linear-gradient(135deg, #111827, #312e81);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .highlight::before,
+        .highlight::after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255,255,255,.08);
+        }
+
+        .highlight::before {
+            width: 260px;
+            height: 260px;
+            right: -80px;
+            top: -100px;
+        }
+
+        .highlight::after {
+            width: 180px;
+            height: 180px;
+            left: -70px;
+            bottom: -80px;
+        }
+
+        .highlight-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+        }
+
+        .highlight h2 {
+            font-size: 36px;
+            margin-bottom: 12px;
+        }
+
+        .highlight p {
+            color: #d8dded;
+            font-size: 17px;
+        }
+
+        /* =========================
+           PRICE
+        ========================= */
+
+        .price-section {
+            background: #eef2ff;
+        }
+
+        .pricing {
+            max-width: 600px;
             margin: auto;
             background: white;
-            padding: 35px;
-            border-radius: 15px;
+            border-radius: 28px;
+            padding: 38px;
+            box-shadow: 0 25px 60px rgba(30,40,80,.12);
+            border: 1px solid #e1e5f5;
             text-align: center;
-            box-shadow: 0 5px 25px rgba(0,0,0,.1);
+        }
+
+        .pricing h2 {
+            font-size: 30px;
+            margin-bottom: 8px;
         }
 
         .price {
-            font-size: 38px;
-            font-weight: bold;
+            font-size: 48px;
+            font-weight: 900;
             margin: 15px 0;
+            background: linear-gradient(90deg, #6366f1, #7c3aed);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .payment-option {
-            margin-top: 25px;
-            padding-top: 25px;
-            border-top: 1px solid #ddd;
+        .price-description {
+            color: #6b7280;
+            margin-bottom: 25px;
+        }
+
+        .payment-box {
+            border: 1px solid #e5e7eb;
+            border-radius: 18px;
+            padding: 22px;
+            margin-top: 18px;
+            text-align: left;
+        }
+
+        .payment-box h3 {
+            margin-bottom: 6px;
+        }
+
+        .payment-box p {
+            font-size: 14px;
+            color: #6b7280;
+            margin-bottom: 15px;
         }
 
         input[type="email"] {
             width: 100%;
             padding: 14px;
-            border: 1px solid #ccc;
-            border-radius: 8px;
-            font-size: 16px;
-            margin: 15px 0;
+            border: 1px solid #d6d9e1;
+            border-radius: 10px;
+            font-size: 15px;
+            margin-bottom: 12px;
+            outline: none;
         }
 
-        button {
+        input[type="email"]:focus {
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99,102,241,.10);
+        }
+
+        .paypal-box {
+            background: linear-gradient(135deg, #eff6ff, #ffffff);
+        }
+
+        .paypal-price {
+            font-size: 25px;
+            font-weight: 800;
+            color: #003087;
+            margin: 10px 0;
+        }
+
+        .paypal-button {
             width: 100%;
-            padding: 14px 20px;
-            border: none;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            margin-top: 8px;
-        }
-
-        .btn-mp {
-            background: #009ee3;
-            color: white;
-        }
-
-        .btn-paypal {
             background: #ffc439;
-            color: #111;
+            color: #111827;
+            border: none;
+            padding: 14px;
+            border-radius: 10px;
+            font-weight: 800;
+            cursor: pointer;
+            font-size: 16px;
+            transition: .2s;
         }
 
-        button:disabled {
-            opacity: .6;
-            cursor: not-allowed;
+        .paypal-button:hover {
+            transform: translateY(-2px);
+            filter: brightness(.97);
         }
 
-        .license-result {
+        .mercado-button {
+            width: 100%;
+        }
+
+        /* =========================
+           LICENSE RESULT
+        ========================= */
+
+        #resultadoLicencia {
             display: none;
-            margin-top: 30px;
-            padding: 25px;
-            border-radius: 12px;
+            margin-top: 25px;
+            padding: 22px;
+            border-radius: 15px;
             background: #ecfdf5;
-            border: 1px solid #10b981;
+            border: 1px solid #a7f3d0;
         }
 
-        .license-key {
+        #resultadoLicencia h3 {
+            color: #047857;
+            margin-bottom: 10px;
+        }
+
+        #claveLicencia {
             display: block;
-            margin: 15px 0;
-            padding: 15px;
+            padding: 14px;
             background: white;
-            border-radius: 8px;
-            font-size: 22px;
-            font-weight: bold;
-            letter-spacing: 2px;
+            border: 1px dashed #10b981;
+            border-radius: 10px;
+            font-size: 19px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            margin-top: 10px;
             word-break: break-all;
         }
 
-        .error {
+        #errorLicencia {
             display: none;
-            margin-top: 20px;
-            padding: 15px;
+            margin-top: 15px;
+            padding: 14px;
+            border-radius: 10px;
             background: #fef2f2;
             color: #b91c1c;
-            border-radius: 8px;
         }
 
+        /* =========================
+           FAQ
+        ========================= */
+
         .faq {
-            margin-bottom: 20px;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
+            max-width: 800px;
+            margin: auto;
         }
+
+        details {
+            background: white;
+            border: 1px solid #e5e7eb;
+            border-radius: 14px;
+            padding: 18px 20px;
+            margin-bottom: 12px;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        details p {
+            color: #687286;
+            margin-top: 12px;
+        }
+
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
             background: #111827;
-            color: white;
+            color: #9ca3af;
             text-align: center;
-            padding: 30px;
-            margin-top: 40px;
+            padding: 35px 20px;
         }
 
-        @media (max-width: 600px) {
-            header h1 {
+        footer strong {
+            color: white;
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 950px) {
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-visual {
+                min-height: 350px;
+            }
+        }
+
+        @media (max-width: 650px) {
+
+            nav {
+                display: none;
+            }
+
+            .hero {
+                padding-top: 65px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .pricing {
+                padding: 25px 18px;
+            }
+
+            .highlight {
+                padding: 35px 25px;
+            }
+
+            .highlight h2 {
                 font-size: 28px;
             }
 
-            .hero h2 {
-                font-size: 32px;
+            .folder-main {
+                width: 240px;
+                height: 180px;
             }
 
-            nav a {
-                margin: 0 6px;
-                font-size: 14px;
+            .floating-card {
+                font-size: 13px;
+                padding: 12px;
             }
         }
+
     </style>
 </head>
 
 <body>
 
 <header>
-    <h1>OrdenFix</h1>
-    <p>Menos desorden. Más control.</p>
+
+    <div class="nav">
+
+        <div class="logo">
+            <div class="logo-icon">⚡</div>
+            OrdenFix
+        </div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#caracteristicas">Características</a>
+            <a href="#precio">Precio</a>
+            <a href="#faq">FAQ</a>
+        </nav>
+
+    </div>
+
 </header>
 
-<nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#caracteristicas">Características</a>
-    <a href="#precio">Precio</a>
-    <a href="#faq">FAQ</a>
-</nav>
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero" id="inicio">
 
-    <h2>Organiza tus archivos fácilmente</h2>
+    <div class="hero-container">
 
-    <p>
-        OrdenFix te ayuda a organizar, mover, copiar, renombrar
-        y encontrar archivos duplicados con pocos clics.
-    </p>
+        <div>
 
-</section>
+            <div class="badge">
+                ⚡ Una herramienta para poner orden
+            </div>
 
-<section class="container" id="caracteristicas">
+            <h1>
+                Menos desorden.
+                <span>Más control.</span>
+            </h1>
 
-    <h2 class="section-title">Características</h2>
-
-    <div class="cards">
-
-        <div class="card">
-            <h3>📁 Organización</h3>
             <p>
-                Organiza tus archivos de forma rápida y sencilla.
+                OrdenFix te ayuda a organizar, limpiar, renombrar,
+                encontrar archivos duplicados y trabajar con tus
+                documentos e imágenes desde un solo lugar.
             </p>
+
+            <div class="hero-buttons">
+
+                <a href="#precio" class="btn btn-primary">
+                    Comprar OrdenFix
+                </a>
+
+                <a href="#caracteristicas" class="btn btn-secondary">
+                    Ver características
+                </a>
+
+            </div>
+
         </div>
 
-        <div class="card">
-            <h3>🔍 Duplicados</h3>
-            <p>
-                Encuentra archivos duplicados y elimina los que no necesitas.
-            </p>
-        </div>
 
-        <div class="card">
-            <h3>✏️ Renombrar</h3>
-            <p>
-                Cambia los nombres de muchos archivos al mismo tiempo.
-            </p>
-        </div>
+        <div class="hero-visual">
 
-        <div class="card">
-            <h3>🗂️ Carpetas</h3>
-            <p>
-                Mueve, copia y administra tus archivos fácilmente.
-            </p>
-        </div>
+            <div class="floating-card card-one">
+                🔍 Duplicados encontrados
+            </div>
 
-        <div class="card">
-            <h3>🧹 Limpieza</h3>
-            <p>
-                Detecta carpetas vacías y ayuda a mantener tu equipo organizado.
-            </p>
-        </div>
+            <div class="floating-card card-two">
+                📁 Archivos organizados
+            </div>
 
-        <div class="card">
-            <h3>🖼️ Conversiones</h3>
-            <p>
-                Trabaja con diferentes formatos de imágenes y documentos.
-            </p>
+            <div class="floating-card card-three">
+                🧹 Carpetas limpias
+            </div>
+
+            <div class="folder-main">
+
+                <div class="big-icon">
+                    📂
+                </div>
+
+                <h3>
+                    OrdenFix
+                </h3>
+
+                <span>
+                    Todo en su lugar.
+                </span>
+
+            </div>
+
         </div>
 
     </div>
 
 </section>
 
-<section class="container" id="precio">
 
-    <h2 class="section-title">Obtén OrdenFix</h2>
+<!-- =========================
+     FEATURES
+========================= -->
 
-    <div class="price-box">
+<section class="section" id="caracteristicas">
 
-        <h3>OrdenFix - Licencia Permanente</h3>
+    <div class="section-header">
+
+        <h2>
+            Todo lo necesario para trabajar con tus archivos
+        </h2>
+
+        <p>
+            OrdenFix reúne diferentes herramientas en una sola aplicación
+            para que no tengas que estar buscando programas diferentes.
+        </p>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📁
+            </div>
+
+            <h3>
+                Organización
+            </h3>
+
+            <p>
+                Organiza archivos y carpetas de forma rápida
+                para mantener tu información bajo control.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🔎
+            </div>
+
+            <h3>
+                Archivos duplicados
+            </h3>
+
+            <p>
+                Encuentra archivos repetidos y elimina los
+                duplicados que ya no necesitas.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✏️
+            </div>
+
+            <h3>
+                Renombrado masivo
+            </h3>
+
+            <p>
+                Cambia los nombres de muchos archivos de una
+                sola vez sin hacerlo manualmente.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📋
+            </div>
+
+            <h3>
+                Copiar y mover
+            </h3>
+
+            <p>
+                Copia o mueve archivos entre carpetas de manera
+                sencilla y controlada.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🧹
+            </div>
+
+            <h3>
+                Limpieza
+            </h3>
+
+            <p>
+                Detecta y elimina carpetas vacías para mantener
+                tus directorios más limpios.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                🖼️
+            </div>
+
+            <h3>
+                Adaptador de imágenes
+            </h3>
+
+            <p>
+                Ajusta imágenes y prepara archivos gráficos
+                para diferentes necesidades.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📄
+            </div>
+
+            <h3>
+                Excel → PDF
+            </h3>
+
+            <p>
+                Convierte documentos de Excel a PDF para
+                compartirlos o archivarlos fácilmente.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                📝
+            </div>
+
+            <h3>
+                Word → PDF
+            </h3>
+
+            <p>
+                Convierte documentos de Word a PDF desde
+                una misma aplicación.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     SECURITY / ANALYSIS
+========================= -->
+
+<section class="section">
+
+    <div class="highlight">
+
+        <div class="highlight-content">
+
+            <h2>
+                🔐 Analiza tus archivos antes de trabajar con ellos
+            </h2>
+
+            <p>
+                Herramientas pensadas para revisar y trabajar con
+                tus carpetas de forma más controlada, evitando que
+                el desorden termine convirtiéndose en un problema.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     PRICE
+========================= -->
+
+<section class="section price-section" id="precio">
+
+    <div class="section-header">
+
+        <h2>
+            Una sola licencia
+        </h2>
+
+        <p>
+            Compra OrdenFix y utiliza la aplicación con una
+            licencia permanente.
+        </p>
+
+    </div>
+
+
+    <div class="pricing">
+
+        <h2>
+            OrdenFix - Licencia Permanente
+        </h2>
 
         <div class="price">
             $9.000 COP
         </div>
 
-        <p>
-            Compra una licencia permanente y activa tu copia de OrdenFix.
+        <p class="price-description">
+            Pago único. Sin suscripción mensual.
         </p>
 
-        <!-- ========================= -->
+
         <!-- MERCADO PAGO -->
-        <!-- ========================= -->
 
-        <div class="payment-option">
+        <div class="payment-box">
 
-            <h3>🇨🇴 Pagar con Mercado Pago</h3>
+            <h3>
+                🇨🇴 Comprar con Mercado Pago
+            </h3>
+
+            <p>
+                Ingresa tu correo para recibir y consultar tu licencia.
+            </p>
 
             <input
                 type="email"
                 id="emailCompra"
                 placeholder="Tu correo electrónico"
-                autocomplete="email">
+            >
 
             <button
-                class="btn-mp"
-                id="btnMercadoPago"
-                type="button"
-                onclick="comprarOrdenFix()">
-
+                class="btn btn-primary mercado-button"
+                onclick="comprarOrdenFix()"
+            >
                 Comprar OrdenFix — $9.000 COP
-
             </button>
 
         </div>
 
-        <!-- ========================= -->
+
         <!-- PAYPAL -->
-        <!-- ========================= -->
 
-        <div class="payment-option">
+        <div class="payment-box paypal-box">
 
-            <h3>🌎 Pagar con PayPal</h3>
+            <h3>
+                💳 Comprar con PayPal
+            </h3>
+
+            <div class="paypal-price">
+                USD 3.50
+            </div>
 
             <p>
-                Pago internacional mediante PayPal.
-            </p>
-
-            <p>
-                <strong>USD 2.50</strong>
+                Pago seguro mediante PayPal.
             </p>
 
             <button
-                class="btn-paypal"
-                id="btnPayPal"
-                type="button"
-                onclick="comprarPayPal()">
-
-                Comprar con PayPal — USD 2.50
-
+                class="paypal-button"
+                onclick="comprarPayPal()"
+            >
+                Comprar con PayPal — USD 3.50
             </button>
 
-            <small>
-                Precio de prueba mientras PayPal está en Sandbox.
-            </small>
-
         </div>
 
-        <!-- ========================= -->
+
         <!-- RESULTADO LICENCIA -->
-        <!-- ========================= -->
 
-        <div
-            class="license-result"
-            id="resultadoLicencia">
+        <div id="resultadoLicencia">
 
-            <h3>✅ ¡Pago confirmado!</h3>
-
-            <p id="mensajeLicencia">
-                Tu licencia de OrdenFix es:
-            </p>
-
-            <span
-                class="license-key"
-                id="claveLicencia">
-            </span>
+            <h3>
+                ✅ ¡Licencia generada!
+            </h3>
 
             <p>
-                Guarda esta licencia. La necesitarás para activar OrdenFix.
+                Guarda esta clave. La necesitarás para activar
+                OrdenFix.
             </p>
 
+            <span id="claveLicencia"></span>
+
         </div>
 
-        <div
-            class="error"
-            id="errorLicencia">
-        </div>
+
+        <div id="errorLicencia"></div>
 
     </div>
 
 </section>
 
-<section class="container" id="faq">
 
-    <h2 class="section-title">Preguntas frecuentes</h2>
+<!-- =========================
+     FAQ
+========================= -->
 
-    <div class="faq">
+<section class="section" id="faq">
 
-        <h3>¿La licencia es permanente?</h3>
+    <div class="section-header">
+
+        <h2>
+            Preguntas frecuentes
+        </h2>
 
         <p>
-            Sí. La licencia adquirida es permanente.
+            Lo básico antes de comprar OrdenFix.
         </p>
 
     </div>
 
-    <div class="faq">
-
-        <h3>¿Dónde recibo mi licencia?</h3>
-
-        <p>
-            Después de completar el pago, la licencia aparece en esta página.
-        </p>
-
-    </div>
 
     <div class="faq">
 
-        <h3>¿Puedo pagar con PayPal?</h3>
+        <details>
 
-        <p>
-            Sí. OrdenFix permite realizar el pago mediante PayPal.
-        </p>
+            <summary>
+                ¿La licencia es permanente?
+            </summary>
+
+            <p>
+                Sí. La licencia de OrdenFix es de pago único
+                y no requiere una suscripción mensual.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                ¿Cómo recibo mi licencia?
+            </summary>
+
+            <p>
+                Después de completar el proceso de pago,
+                OrdenFix genera una clave de licencia que
+                puedes utilizar para activar la aplicación.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                ¿Puedo pagar con PayPal?
+            </summary>
+
+            <p>
+                Sí. Actualmente puedes comprar la licencia
+                mediante PayPal por USD 3.50.
+            </p>
+
+        </details>
+
+
+        <details>
+
+            <summary>
+                ¿Qué puedo hacer con OrdenFix?
+            </summary>
+
+            <p>
+                Puedes organizar archivos, buscar duplicados,
+                renombrar archivos, copiar, mover, limpiar
+                carpetas, trabajar con imágenes y realizar
+                conversiones de documentos.
+            </p>
+
+        </details>
 
     </div>
 
 </section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
     <p>
-        © 2026 OrdenFix
-    </p>
-
-    <p>
+        © 2026 <strong>OrdenFix</strong>.
         Menos desorden. Más control.
     </p>
 
@@ -460,47 +1181,54 @@
 
 <script>
 
-const WORKER_URL =
-    "https://ordenfix-licencias.sebasthian-diaz2019.workers.dev";
+    const WORKER_URL =
+        "https://ordenfix-licencias.sebasthian-diaz2019.workers.dev";
 
 
-// =====================================================
-// MERCADO PAGO
-// =====================================================
+    /* =========================
+       MERCADO PAGO
+    ========================= */
 
-async function comprarOrdenFix() {
+    async function comprarOrdenFix() {
 
-    const email =
-        document.getElementById("emailCompra").value.trim();
+        const email =
+            document.getElementById("emailCompra").value.trim();
 
-    const boton =
-        document.getElementById("btnMercadoPago");
+        const error =
+            document.getElementById("errorLicencia");
 
-    if (!email) {
+        error.style.display = "none";
+        error.textContent = "";
 
-        alert(
-            "Escribe tu correo electrónico antes de continuar."
-        );
+        if (!email) {
 
-        return;
-    }
+            error.textContent =
+                "Ingresa tu correo electrónico.";
 
-    boton.disabled = true;
+            error.style.display = "block";
 
-    boton.textContent =
-        "Conectando con Mercado Pago...";
+            return;
+        }
 
-    try {
+        if (!email.includes("@")) {
 
-        const respuesta =
-            await fetch(
-                `${WORKER_URL}/crear-pago`,
+            error.textContent =
+                "Ingresa un correo electrónico válido.";
+
+            error.style.display = "block";
+
+            return;
+        }
+
+        try {
+
+            const respuesta = await fetch(
+                WORKER_URL + "/crear-pago",
                 {
                     method: "POST",
 
                     headers: {
-                        "Content-Type":
-                            "application/json"
+                        "Content-Type": "application/json"
                     },
 
                     body: JSON.stringify({
@@ -509,257 +1237,194 @@ async function comprarOrdenFix() {
                 }
             );
 
-        const datos =
-            await respuesta.json();
+            const datos = await respuesta.json();
 
-        if (!respuesta.ok || !datos.ok) {
+            if (!respuesta.ok || !datos.init_point) {
 
-            throw new Error(
-                datos.error ||
-                "No se pudo iniciar el pago."
-            );
+                throw new Error(
+                    datos.error ||
+                    "No se pudo iniciar el pago."
+                );
+            }
+
+            window.location.href =
+                datos.init_point;
+
+        } catch (e) {
+
+            error.textContent =
+                e.message ||
+                "Ocurrió un error al iniciar el pago.";
+
+            error.style.display = "block";
         }
 
-        window.location.href =
-            datos.init_point;
-
-    } catch (error) {
-
-        console.error(error);
-
-        alert(
-            "No se pudo iniciar el pago.\n\n" +
-            error.message
-        );
-
-        boton.disabled = false;
-
-        boton.textContent =
-            "Comprar OrdenFix — $9.000 COP";
     }
-}
 
 
-// =====================================================
-// PAYPAL - CREAR ORDEN
-// =====================================================
+    /* =========================
+       PAYPAL
+    ========================= */
 
-async function comprarPayPal() {
+    async function comprarPayPal() {
 
-    const boton =
-        document.getElementById("btnPayPal");
+        const error =
+            document.getElementById("errorLicencia");
 
-    boton.disabled = true;
+        error.style.display = "none";
+        error.textContent = "";
 
-    boton.textContent =
-        "Conectando con PayPal...";
+        try {
 
-    try {
-
-        const respuesta =
-            await fetch(
-                `${WORKER_URL}/crear-pago-paypal`,
+            const respuesta = await fetch(
+                WORKER_URL + "/crear-pago-paypal",
                 {
                     method: "POST",
 
                     headers: {
-                        "Content-Type":
-                            "application/json"
-                    },
-
-                    body: JSON.stringify({})
+                        "Content-Type": "application/json"
+                    }
                 }
             );
 
-        const datos =
-            await respuesta.json();
+            const datos = await respuesta.json();
 
-        console.log(
-            "Respuesta crear PayPal:",
-            datos
-        );
+            if (
+                !respuesta.ok ||
+                !datos.checkout_url
+            ) {
 
-        if (!respuesta.ok || !datos.ok) {
+                throw new Error(
+                    datos.error ||
+                    "No se pudo iniciar el pago con PayPal."
+                );
+            }
 
-            throw new Error(
-                datos.error ||
-                "No se pudo crear la orden PayPal."
-            );
+            window.location.href =
+                datos.checkout_url;
+
+        } catch (e) {
+
+            error.textContent =
+                e.message ||
+                "Ocurrió un error al iniciar PayPal.";
+
+            error.style.display = "block";
         }
 
-        if (!datos.checkout_url) {
+    }
 
-            throw new Error(
-                "PayPal no devolvió el enlace de pago."
+
+    /* =========================
+       REGRESO DE PAYPAL
+    ========================= */
+
+    async function procesarRegresoPayPal() {
+
+        const parametros =
+            new URLSearchParams(
+                window.location.search
             );
+
+        const orderId =
+            parametros.get("paypal_order_id");
+
+        if (!orderId) {
+            return;
         }
 
-        window.location.href =
-            datos.checkout_url;
+        const resultado =
+            document.getElementById(
+                "resultadoLicencia"
+            );
 
-    } catch (error) {
+        const clave =
+            document.getElementById(
+                "claveLicencia"
+            );
 
-        console.error(
-            "Error PayPal:",
-            error
-        );
+        const error =
+            document.getElementById(
+                "errorLicencia"
+            );
 
-        alert(
-            "No se pudo iniciar el pago con PayPal.\n\n" +
-            error.message
-        );
+        try {
 
-        boton.disabled = false;
+            resultado.style.display = "none";
+            error.style.display = "none";
 
-        boton.textContent =
-            "Comprar con PayPal — USD 2.50";
-    }
-}
-
-
-// =====================================================
-// PAYPAL - CAPTURAR PAGO
-// =====================================================
-
-async function procesarRegresoPayPal() {
-
-    const parametros =
-        new URLSearchParams(
-            window.location.search
-        );
-
-    /*
-        PayPal devuelve el token al Worker.
-        El Worker obtiene ese token y redirige
-        a OrdenFix usando "paypal_order_id".
-    */
-
-    const orderId =
-        parametros.get("paypal_order_id");
-
-    if (!orderId) {
-        return;
-    }
-
-    const resultado =
-        document.getElementById(
-            "resultadoLicencia"
-        );
-
-    const clave =
-        document.getElementById(
-            "claveLicencia"
-        );
-
-    const error =
-        document.getElementById(
-            "errorLicencia"
-        );
-
-    resultado.style.display =
-        "block";
-
-    error.style.display =
-        "none";
-
-    clave.textContent =
-        "Verificando el pago con PayPal...";
-
-    try {
-
-        const respuesta =
-            await fetch(
-                `${WORKER_URL}/capturar-pago-paypal`,
+            const respuesta = await fetch(
+                WORKER_URL + "/capturar-pago-paypal",
                 {
                     method: "POST",
 
                     headers: {
-                        "Content-Type":
-                            "application/json"
+                        "Content-Type": "application/json"
                     },
 
                     body: JSON.stringify({
-                        order_id:
-                            orderId
+                        orderId: orderId
                     })
                 }
             );
 
-        const datos =
-            await respuesta.json();
+            const datos =
+                await respuesta.json();
 
-        console.log(
-            "Respuesta captura PayPal:",
-            datos
-        );
+            if (
+                !respuesta.ok ||
+                !datos.licencia
+            ) {
 
-        if (!respuesta.ok || !datos.ok) {
+                throw new Error(
+                    datos.error ||
+                    "No se pudo obtener la licencia."
+                );
+            }
 
-            throw new Error(
-                datos.error ||
-                "No se pudo confirmar el pago."
+            clave.textContent =
+                datos.licencia;
+
+            resultado.style.display =
+                "block";
+
+            window.history.replaceState(
+                {},
+                document.title,
+                window.location.pathname
             );
+
+            resultado.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+
+        } catch (e) {
+
+            error.textContent =
+                e.message ||
+                "No se pudo procesar la licencia.";
+
+            error.style.display =
+                "block";
+
         }
 
-        if (!datos.licencia) {
+    }
 
-            throw new Error(
-                "El pago fue confirmado, pero no se recibió la licencia."
-            );
+
+    /* =========================
+       INICIO
+    ========================= */
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            procesarRegresoPayPal();
+
         }
-
-        clave.textContent =
-            datos.licencia;
-
-        document.getElementById(
-            "mensajeLicencia"
-        ).textContent =
-            "Tu licencia fue generada correctamente. Guárdala para activar OrdenFix.";
-
-        /*
-            Eliminamos paypal_order_id
-            de la URL después de recibir
-            correctamente la licencia.
-        */
-
-        window.history.replaceState(
-            {},
-            document.title,
-            window.location.pathname
-        );
-
-    } catch (errorPayPal) {
-
-        console.error(
-            "Error capturando PayPal:",
-            errorPayPal
-        );
-
-        resultado.style.display =
-            "none";
-
-        error.style.display =
-            "block";
-
-        error.textContent =
-            "No pudimos confirmar el pago de PayPal. " +
-            errorPayPal.message;
-    }
-}
-
-
-// =====================================================
-// PROCESAR REGRESO DE PAYPAL
-// =====================================================
-
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
-
-        procesarRegresoPayPal();
-
-    }
-);
+    );
 
 </script>
 
