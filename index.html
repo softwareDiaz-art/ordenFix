@@ -629,12 +629,13 @@ async function procesarRegresoPayPal() {
         );
 
     /*
-        PayPal devuelve el ID de la orden
-        en el parámetro "token".
+        PayPal devuelve el token al Worker.
+        El Worker obtiene ese token y redirige
+        a OrdenFix usando "paypal_order_id".
     */
 
     const orderId =
-        parametros.get("token");
+        parametros.get("paypal_order_id");
 
     if (!orderId) {
         return;
@@ -716,8 +717,9 @@ async function procesarRegresoPayPal() {
             "Tu licencia fue generada correctamente. Guárdala para activar OrdenFix.";
 
         /*
-            Quitamos token y PayerID
-            de la URL.
+            Eliminamos paypal_order_id
+            de la URL después de recibir
+            correctamente la licencia.
         */
 
         window.history.replaceState(
