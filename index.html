@@ -7,7 +7,7 @@
     <title>OrdenFix - Organiza, convierte y controla tus archivos</title>
 
     <meta name="description"
-          content="OrdenFix organiza archivos, encuentra duplicados, renombra, limpia carpetas y permite convertir documentos e imágenes fácilmente.">
+          content="OrdenFix organiza archivos, encuentra duplicados, renombra, limpia carpetas y permite convertir documentos e imágenes fácilmente. Pruébalo 7 días gratis.">
 
     <style>
         * {
@@ -312,33 +312,6 @@
             font-size: 14px;
         }
 
-        .highlight {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 55px;
-            border-radius: 30px;
-            background: linear-gradient(135deg, #111827, #312e81);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .highlight-content {
-            position: relative;
-            z-index: 2;
-            max-width: 700px;
-        }
-
-        .highlight h2 {
-            font-size: 36px;
-            margin-bottom: 12px;
-        }
-
-        .highlight p {
-            color: #d8dded;
-            font-size: 17px;
-        }
-
         .price-section {
             background: #eef2ff;
         }
@@ -520,7 +493,7 @@
     <div class="hero-container">
         <div>
             <div class="badge">
-                ⚡ Una herramienta para poner orden
+                ⚡ ¡Descárgalo y pruébalo 7 días gratis!
             </div>
             <h1>
                 Menos desorden.
@@ -529,7 +502,7 @@
             <p>
                 OrdenFix te ayuda a organizar, limpiar, renombrar,
                 encontrar archivos duplicados y trabajar con tus
-                documentos e imágenes desde un solo lugar.
+                documentos e imágenes. <strong>Incluye 7 días de prueba gratis</strong> al descargar.
             </p>
             <div class="hero-buttons">
                 <a href="#precio" class="btn btn-primary">
@@ -538,7 +511,7 @@
 
                 <!-- BOTÓN DE DESCARGA CON ADSTERRA INTEGRADO -->
                 <button onclick="descargarOrdenFix()" class="btn btn-secondary">
-                    ⬇️ Descargar OrdenFix
+                    ⬇️ Descarga 7 días gratis
                 </button>
 
                 <a href="#caracteristicas" class="btn btn-secondary">
@@ -550,7 +523,7 @@
         <div class="hero-visual">
             <div class="floating-card card-one">🔍 Duplicados encontrados</div>
             <div class="floating-card card-two">📁 Archivos organizados</div>
-            <div class="floating-card card-three">🧹 Carpetas limpias</div>
+            <div class="floating-card card-three">🧹 7 días de prueba gratis</div>
             <div class="folder-main">
                 <div class="big-icon">📂</div>
                 <h3>OrdenFix</h3>
@@ -592,7 +565,7 @@
 <section class="section price-section" id="precio">
     <div class="section-header">
         <h2>Una sola licencia</h2>
-        <p>Compra OrdenFix y utiliza la aplicación con una licencia permanente.</p>
+        <p>Compra OrdenFix después de tu prueba y utilízalo con una licencia permanente.</p>
     </div>
     <div class="pricing">
         <h2>OrdenFix - Licencia Permanente</h2>
@@ -630,12 +603,16 @@
     </div>
     <div class="faq">
         <details>
+            <summary>¿Cómo funcionan los 7 días gratis?</summary>
+            <p>Al descargar la aplicación, podrás utilizar todas sus funciones de manera totalmente gratuita durante los primeros 7 días sin necesidad de pagar nada.</p>
+        </details>
+        <details>
             <summary>¿La licencia es permanente?</summary>
-            <p>Sí. La licencia de OrdenFix es de pago único y no requiere suscripción mensual.</p>
+            <p>Sí. Pasados los 7 días de prueba, la licencia de OrdenFix es de pago único y no requiere suscripción mensual.</p>
         </details>
         <details>
             <summary>¿Cómo recibo mi licencia?</summary>
-            <p>Después de pagar, se genera automáticamente una clave para activar la aplicación.</p>
+            <p>Después de pagar, se genera automáticamente una clave para activar la aplicación de forma permanente.</p>
         </details>
         <details>
             <summary>¿Puedo pagar con PayPal?</summary>
@@ -652,7 +629,7 @@
     const WORKER_URL = "https://ordenfix-licencias.sebasthian-diaz2019.workers.dev";
 
     /* =========================
-       FUNCIÓN DE DESCARGA CON ANUNCIO (DIRECT LINK)
+        FUNCIÓN DE DESCARGA CON ANUNCIO (DIRECT LINK)
     ========================= */
     function descargarOrdenFix() {
         // 1. Abre el enlace directo de Adsterra en una pestaña nueva
